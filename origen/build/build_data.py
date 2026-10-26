@@ -1,7 +1,7 @@
 """Genera los datos de la biblioteca ORIGEN.
 
 Uso:  python3 origen/build/build_data.py
-Salida: origen/data/origen-data.json, origen-data.js, banco-240.csv, referencias.csv, prompts-C001-C002.txt
+Salida: origen/data/origen-data.json, origen-data.js, banco-240.csv, referencias.csv, prompts-todos.txt
 """
 import csv
 import json
@@ -20,6 +20,7 @@ from datos_investigacion import (  # noqa: E402
     NOTAS_SITIO, NOTAS_PIN_LEGACY, NOTAS_PIN_NUEVO, OPORTUNIDADES, REGLAS_TRANSFERIBLES, RECOMENDACIONES,
     LEGADO, LEGADO_GLOBAL, ACTIVOS, PENDIENTES_CLAVE)
 from datos_fichas import FICHAS, ESCENA_LOC, ESCENA_MESA  # noqa: E402
+import guiones  # noqa: E402
 
 # ------------------------------------------------------------------ bloques comunes (sección 3, literales)
 POSITIVO = ("Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. "
@@ -96,23 +97,6 @@ REFS, REF_INDEX = build_refs()
 REF_BY_ID = {r["id"]: r for r in REFS}
 
 # ------------------------------------------------------------------ banco
-STRUCT_CAMERA = {
-    "hero": ("45-degree view from the diner's side, 50-60 cm from the plate, 50 mm equivalent", "plate in the lower two thirds, real table edge visible, top 22% calm"),
-    "macrop": ("close macro at 25-35 cm, 70-100 mm equivalent, focus on the front texture", "texture fills the frame, a hint of the real plate edge, top 20% calm"),
-    "escena": ("standing eye level from an aisle, 2-3 m back, 35 mm equivalent, verticals straight", "room depth readable, table in the lower third, top 22% calm"),
-    "negativo": ("seated eye level, 1-1.5 m, 35-50 mm equivalent", "subject small in the lower third, generous negative space above for text"),
-    "humano": ("seated eye level or slightly above, 60-80 cm, 50 mm equivalent, faces out of frame", "hands and plate interacting in the lower half, top 22% calm"),
-    "oficio": ("eye level of the team member, 1-1.5 m, 35-50 mm equivalent, only with consent", "person or hands working in a real ORIGEN area, top 22% calm"),
-    "bodegon": ("top-down or 30 degrees, 60 cm, 50 mm equivalent", "few confirmed ingredients on a real ORIGEN surface, side daylight"),
-    "tipo": ("seated eye level, 1 m, 35-50 mm equivalent", "image calm enough for a short headline; subject below the center"),
-    "diptico": ("two frames with identical height, angle and light", "split canvas 50/50 or 60/40, consistent horizon"),
-    "sobremesa": ("seated eye level, 70 cm, 35-50 mm equivalent", "used napkins, glasses partly full, no staged mess"),
-    "dosplatos": ("top-down or 45 degrees, both plates at the same distance", "two plates balanced, real table between them"),
-    "campana": ("seated eye level, 1 m, 35 mm equivalent", "real table and dish with clear space for a discreet CTA"),
-}
-CAROUSEL_CAMERA = ("cover shot: seated eye level, 1-1.2 m, 35-50 mm equivalent", "cover with calm top 22% for the title; later slides follow the structure")
-
-
 def parse_bank():
     ideas = []
     for line in BANCO.strip().splitlines():
@@ -220,49 +204,6 @@ def refs_para(i):
     return chosen
 
 
-def prompt_base(i, b):
-    es_car = i["id"].startswith("C")
-    pieza = f"{i['id']}-S01 (portada)" if es_car else i["id"]
-    anclas = anclas_de(i)
-    platos = [a for a in anclas if a["tipo"] == "PLATO"]
-    loc_line = "LOC-01 — salón clásico (provisional: confirmar que es ORIGEN; si el espacio real es LOC-03, reemplazar)" if any(a["tipo"] == "LOC" for a in anclas) else "no requerido para esta toma"
-    mesa_line = "MESA-01 — mesa clásica (provisional)" if any(a["tipo"] == "MESA" for a in anclas) else "no requerido"
-    plato_lines = [f"PENDIENTE: adjuntar {a['id']} ({a['plato']}) — generación final BLOQUEADA hasta recibirla" for a in platos] or ["no aplica"]
-    extra = [a for a in anclas if a["tipo"] not in ("LOC", "MESA", "PLATO")]
-    estado = "BLOQUEADO" if estado_de(i) == "BLOQUEADO" else "PARCIAL"
-    cam, comp = (CAROUSEL_CAMERA if es_car else STRUCT_CAMERA.get(i["estructura"], CAROUSEL_CAMERA))
-    food = ("; ".join(f"{DISHES[p][0]} exactly as in {slug(p)}: preserve portion, plating, plate, garnish and sauce placement; add nothing" for p in i["platos"])
-            or "No food, or only food already present in the attached references.")
-    scene = ESCENA_LOC["LOC-01"] if any(a["tipo"] == "LOC" for a in anclas) else (ESCENA_MESA["MESA-01"] if any(a["tipo"] == "MESA" for a in anclas) else "a real ORIGEN surface documented in the attached references")
-    refs = refs_para(i)
-    ref_lines = [f"{r} — {REF_BY_ID[r]['url']} — {REF_BY_ID[r]['principio']}" for r in refs]
-    txt = f"""PIEZA: {pieza}
-NOMBRE: {i['titulo']}
-TIPO DE PROMPT: BASE AUTOGENERADO desde la matriz (no es ficha completa; pedir «DESARROLLA {i['id']}» para guion y prompts por slide)
-ESTADO DE ANCLAS: {estado} — PENDIENTE DE ANCLAS REALES
-REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
-- LOC: {loc_line}
-- MESA: {mesa_line}
-""" + "".join(f"- PLATO: {l}\n" for l in plato_lines) + "".join(f"- {a['tipo']}: {a['detalle']} — PENDIENTE\n" for a in extra) + """- MARCA: no se usa en la foto; solo en el diseño posterior (MARCA-01, pendiente de vectorial aprobado)
-INSPIRACIÓN NO LITERAL:
-""" + "".join(f"- REF: {l}\n" for l in ref_lines) + f"""
-OBJECTIVE: (ES) {i['gancho']}
-SCENE: {scene}. Do not add any element that is not visible in the attached LOC/MESA images.
-FOOD LOCK: {food}
-ACTION: as described in the objective; nothing staged beyond what happens in a real lunch service.
-CAMERA: {cam}.
-DAYLIGHT: Lunchtime daylight consistent with the windows visible in the attached LOC image; chandeliers or lamps only as faint accents.
-COMPOSITION: {comp}.
-CONTINUITY: same tablecloth, tableware, wood tone and light direction as the anchors.
-REALISM: {POSITIVO}
-NEGATIVE: {NEGATIVO}
-EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
-
-TEXTO A SUPERPONER DESPUÉS: {i['titulo'].rstrip('.')}
-INDICACIÓN DE MONTAJE: titular en el 22 % superior; no tapar el plato ni el borde de la mesa."""
-    return txt
-
-
 # ------------------------------------------------------------------ fichas completas
 def prompt_slide(fid, f, s):
     platos = s["platos"]
@@ -329,16 +270,58 @@ def build_ficha(fid, f):
     return out
 
 
+IDEA_BY_ID = {}
+ANCLA_EXTRA = dict(PER="Personas/manos con consentimiento escrito", EQ="Equipo de ORIGEN con autorización", COC="Foto real y autorización de cocina",
+                   DATO="Dato operativo/comercial por confirmar", UGC="Respuestas de comunidad con permiso", MARCA="Logo y sistema gráfico aprobados",
+                   NUEVA="Foto nueva de un espacio no cubierto por LOC-01..03")
+
+
+def anclas_desde_slides(i):
+    out, seen = [], set()
+    for s in i["guion"]["slides"]:
+        for a in s.get("anclas") or []:
+            if a and a not in seen:
+                seen.add(a)
+                out.append(dict(tipo=a.split("-")[0], id=a, estado="recibida · confirmar que es ORIGEN"))
+    for p in i["platos"]:
+        out.append(dict(tipo="PLATO", id=slug(p), estado="PENDIENTE: no hay foto", plato=DISHES[p][0]))
+    for e in ["PER", "EQ", "COC", "NUEVA", "UGC", "MARCA", "DATO"]:
+        if e in i["extra"]:
+            out.append(dict(tipo=e, id=e, estado="PENDIENTE", detalle=ANCLA_EXTRA[e]))
+    return out
+
+
 # ------------------------------------------------------------------ ensamblar
 def main():
     ideas = parse_bank()
     assert len(ideas) == 240, len(ideas)
+    IDEA_BY_ID.update({i["id"]: i for i in ideas})
     ids = [i["id"] for i in ideas]
     assert ids == [f"C{n:03d}" for n in range(1, 121)] + [f"P{n:03d}" for n in range(1, 121)], "numeración"
     overlaps = {}
     for L in LEGADO:
         for t in L[4].split(";"):
             overlaps.setdefault(t, []).append(L[0])
+    G = guiones.leer()
+    faltan = [x for x in ids if x not in G and x not in FICHAS]
+    sobran = [x for x in G if x not in ids or x in FICHAS]
+    assert not faltan and not sobran, (faltan, sobran)
+    for i in ideas:
+        g = G.get(i["id"])
+        if not g:
+            continue
+        n = len(g["slides"])
+        if i["id"].startswith("P"):
+            assert n == 1, (i["id"], n)
+        else:
+            assert 5 <= n <= 7 or ("Excepción" in g["nota"] and 3 <= n <= 10), (i["id"], n)
+        for sl in g["slides"]:
+            for p in sl["platos"]:
+                if p not in i["platos"]:
+                    i["platos"].append(p)
+            add = {"H": "PER", "S": "EQ", "K": "COC"}.get(sl["toma"])
+            if add and add not in i["extra"]:
+                i["extra"].append(add)
     for i in ideas:
         b = bloque_de(i["id"])
         i["bloque"] = b[0]
@@ -356,7 +339,12 @@ def main():
                                | ({"cocina"} if i["platos"] else set()) | ({"fotógrafo"} if i["platos"] or i["esfuerzo"] >= 3 else set()))
         i["legado"] = overlaps.get(i["id"], [])
         i["refs"] = refs_para(i)
-        i["prompt_base"] = prompt_base(i, b)
+        refs_lines = [f"- REF: {r} — {REF_BY_ID[r]['url']} — {REF_BY_ID[r]['principio']} (no copiar la imagen)" for r in i["refs"]]
+        if i["id"] in G:
+            g = G[i["id"]]
+            i["guion"] = dict(slides=guiones.armar(i, g, refs_lines, i["estado"]), caption=g["caption"], nota=g["nota"],
+                              nivel="Guion v1 con prompt por slide")
+            i["anclas"] = anclas_desde_slides(i)
         i["ficha"] = i["id"] in FICHAS
         for unknown in i["platos"]:
             assert unknown in DISHES, (i["id"], unknown)
@@ -373,6 +361,16 @@ def main():
                          estado="PENDIENTE", piezas=dishes_used.get(k, 0)) for k, v in DISHES.items()]
 
     fichas = {fid: build_ficha(fid, f) for fid, f in FICHAS.items()}
+    for fid, f in fichas.items():
+        for sl in f["slides"]:
+            sl["prompt"] = sl["prompt"].replace(POSITIVO, guiones.TOK_POS).replace(NEGATIVO, guiones.TOK_NEG)
+            sl["anclas"] = [sl["loc"], sl["mesa"]]
+            sl["toma_nombre"] = "Según ficha"
+        i = IDEA_BY_ID[fid]
+        i["guion"] = dict(slides=f["slides"], caption=f["caption"], nota="", nivel="Ficha completa")
+        i["anclas"] = anclas_desde_slides(i)
+    for i in ideas:
+        assert i.get("guion") and i["guion"]["slides"] and i["guion"]["caption"], i["id"]
 
     data = dict(
         meta=dict(proyecto="ORIGEN · Restaurante Gourmet", ubicacion="Country Club de Villa, Chorrillos, Lima, Perú", version="2.0",
@@ -412,23 +410,31 @@ def main():
     with open(os.path.join(OUT, "banco-240.csv"), "w", encoding="utf-8-sig", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["ID", "Bloque", "Formato", "Título", "Estructura", "Objetivo 1", "Objetivo 2", "Segmentos", "Platos", "Anclas pendientes",
-                    "KPI", "Esfuerzo", "Prioridad", "Estado", "Mezcla", "Gancho", "Nota", "Legado", "Referencias"])
+                    "KPI", "Esfuerzo", "Prioridad", "Estado", "Mezcla", "Gancho", "Nota", "Legado", "Referencias", "Slides", "Caption"])
         for i in ideas:
             w.writerow([i["id"], i["bloque"], i["formato"], i["titulo"], i["estructura_label"], OBJETIVOS[i["obj1"]][0],
                         OBJETIVOS[i["obj2"]][0] if i["obj2"] else "", ";".join(i["segmentos"]), "; ".join(i["platos_nombres"]),
                         "; ".join(a["id"] for a in i["anclas"]), i["kpi_label"], i["esfuerzo"], i["prioridad"], i["estado"],
-                        "".join(i["mezcla"]), i["gancho"], i["nota"], ";".join(i["legado"]), ";".join(i["refs"])])
+                        "".join(i["mezcla"]), i["gancho"], i["nota"], ";".join(i["legado"]), ";".join(i["refs"]),
+                        len(i["guion"]["slides"]), i["guion"]["caption"]])
     with open(os.path.join(OUT, "referencias.csv"), "w", encoding="utf-8-sig", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["REF", "Marca/fuente", "Plataforma", "URL", "Imagen", "Autor", "Revisado", "Estado", "Luz", "Descripción observada", "Principio", "Evitar", "Derechos"])
         for r in REFS:
             w.writerow([r["id"], r["marca"], r["plataforma"], r["url"], r["imagen"], r["autor"], r["revisado"], r["estado"], r["luz"], r["visual"], r["principio"], r["evitar"], r["derechos"]])
-    with open(os.path.join(OUT, "prompts-C001-C002.txt"), "w", encoding="utf-8") as fh:
-        for fid, f in fichas.items():
-            for s in f["slides"]:
-                fh.write(s["prompt"] + "\n\n" + "=" * 80 + "\n\n")
+    old = os.path.join(OUT, "prompts-C001-C002.txt")
+    if os.path.exists(old):
+        os.remove(old)
+    nprompts = 0
+    with open(os.path.join(OUT, "prompts-todos.txt"), "w", encoding="utf-8") as fh:
+        for i in ideas:
+            fh.write(f"######## {i['id']} · {i['titulo']} ({len(i['guion']['slides'])} slides) ########\n\n")
+            for s in i["guion"]["slides"]:
+                fh.write(s["prompt"].replace(guiones.TOK_POS, POSITIVO).replace(guiones.TOK_NEG, NEGATIVO) + "\n\n" + "=" * 80 + "\n\n")
+                nprompts += 1
+            fh.write("CAPTION:\n" + i["guion"]["caption"] + "\n\n\n")
     vr = sum(1 for r in REFS if r["estado"] in ("verificada", "diseño", "solo-composición"))
-    print(f"ideas={total} estados={est} mezcla={mix} refs={len(REFS)} (utilizables={vr}) perfiles={len(PERFILES)}")
+    print(f"ideas={total} estados={est} mezcla={mix} refs={len(REFS)} (utilizables={vr}) perfiles={len(PERFILES)} prompts={nprompts}")
 
 
 if __name__ == "__main__":

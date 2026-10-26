@@ -1,7 +1,7 @@
 # ORIGEN · Biblioteca editorial
 
 Sistema editorial consultable para **ORIGEN, Restaurante Gourmet** (Country Club de Villa, Chorrillos, Lima):
-240 conceptos (C001–C120 carruseles, P001–P120 posteos) en 16 bloques, investigación con fuentes,
+240 conceptos (C001–C120 carruseles, P001–P120 posteos) en 16 bloques, cada uno con guion slide por slide, 793 prompts listos para copiar y caption, investigación con fuentes,
 manifiesto de anclas reales, carta estructurada, fichas completas de C001 y C002, planificador y exportación.
 
 ## Abrir
@@ -23,7 +23,7 @@ es público y las fotos incluyen personas reconocibles. Copia tus archivos a esa
 ## Regenerar los datos
 
 ```bash
-python3 origen/build/build_data.py   # escribe data/origen-data.{json,js}, banco-240.csv, referencias.csv, prompts-C001-C002.txt
+python3 origen/build/build_data.py   # escribe data/origen-data.{json,js}, banco-240.csv, referencias.csv, prompts-todos.txt
 python3 origen/build/build_page.py   # envuelve build/pagina.html en index.html
 ```
 
@@ -33,6 +33,8 @@ python3 origen/build/build_page.py   # envuelve build/pagina.html en index.html
 | `build/datos_banco.py` | Las 240 ideas (una línea por idea) |
 | `build/datos_investigacion.py` | Aprendizajes, 56 referentes, anotación de referencias, oportunidades, reglas, legado y manifiesto de activos |
 | `build/datos_fichas.py` | Fichas completas C001 y C002 (guion, tomas, caption, producción, medición) |
+| `build/guiones_*.py` | Guion slide por slide de C003–C120 y P001–P120: tipo de toma, platos, acción, texto en arte y caption |
+| `build/guiones.py` | Valida los guiones y arma el prompt de cada slide con la plantilla de producción |
 | `build/fuentes_verificadas.json` | Registro técnico de lo consultado el 26-oct-2026 (HTTP, títulos, URLs de imagen, pines) |
 | `data/` | Salidas generadas: no editar a mano |
 

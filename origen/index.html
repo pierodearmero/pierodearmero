@@ -239,6 +239,10 @@ const REF = Object.fromEntries(D.investigacion.referencias.map(r => [r.id, r]));
 const ASSET = Object.fromEntries(D.activos.map(a => [a.id, a]));
 const BLOQ = Object.fromEntries(D.bloques.map(b => [b.id, b]));
 const OBJ = D.objetivos, SEG = D.segmentos.lista;
+const expand = p => String(p || '').split('{{REALISMO}}').join(D.reglas.positivo).split('{{NEGATIVO}}').join(D.reglas.negativo);
+const N_PROMPTS = D.ideas.reduce((n, i) => n + i.guion.slides.length, 0);
+const slideText = s => [s.texto.titular, s.texto.subtitulo, s.texto.micro].filter(x => x && x !== '—').join('\n');
+const ideaPrompts = i => i.guion.slides.map(s => expand(s.prompt)).join('\n\n' + '='.repeat(60) + '\n\n');
 const ETAPAS = ['Idea','Brief listo','Esperando anclas','En producción','En revisión','Aprobada','Publicada','Descartada'];
 const STORE = {
   get(k, d){ try{ const v = localStorage.getItem('origen.v2.' + k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
@@ -362,7 +366,7 @@ function renderSync(){
 const VIEWS = [
   ['panel','Panel', () => ''], ['anclas','Anclas reales', () => D.activos.filter(a => a.tipo !== 'PLATO').length + '+' + D.activos.filter(a => a.tipo === 'PLATO').length],
   ['carta','Carta', () => D.carta.platos.length], ['investigacion','Investigación', () => D.investigacion.referencias.length],
-  ['banco','Banco de ideas', () => D.ideas.length], ['plan','Planificador', () => ''], ['legado','Legado L001–L014', () => '14'], ['exportar','Exportar y respaldo', () => '']
+  ['banco','Banco de ideas', () => D.ideas.length], ['prompts','Prompts por bloque', () => N_PROMPTS], ['plan','Planificador', () => ''], ['legado','Legado L001–L014', () => '14'], ['exportar','Exportar y respaldo', () => '']
 ];
 function navHtml(cur){ return VIEWS.map(([k, l, c]) => `<a href="#${k}" ${k === cur ? 'aria-current="page"' : ''}>${esc(l)}<span>${esc(c())}</span></a>`).join(''); }
 let current = 'panel';
@@ -393,7 +397,7 @@ function ideaCard(i){
       <h3>${esc(i.titulo)}</h3><p class="hook">${esc(i.gancho)}</p>
       <div class="row">${i.platos_nombres.slice(0, 3).map(p => `<span class="chip pend">${esc(p)}</span>`).join('')}${i.platos_nombres.length > 3 ? `<span class="chip">+${i.platos_nombres.length - 3}</span>` : ''}</div>
     </div>
-    <div class="foot"><span>${esc(i.estructura_label)} · ${esc(objName(i.obj1))}</span><span title="${esc(i.prioridad_explicacion)}">${prioBar(i.prioridad)}</span></div>
+    <div class="foot"><span>${esc(i.estructura_label)} · ${i.formato === 'Carrusel' ? i.guion.slides.length + ' slides' : '1 imagen'} · ${esc(objName(i.obj1))}</span><span title="${esc(i.prioridad_explicacion)}">${prioBar(i.prioridad)}</span></div>
   </article>`;
 }
 
@@ -411,6 +415,7 @@ R.panel = () => {
     <div class="stat ok"><span class="eyebrow">Listas</span><b>${est.LISTO}</b><span class="small muted">Requieren plato real + espacio confirmado + copy aprobado</span></div>
     <div class="stat warn"><span class="eyebrow">Parciales</span><b>${est.PARCIAL}</b><span class="small muted">Brief e investigación listos; faltan anclas</span></div>
     <div class="stat crit"><span class="eyebrow">Bloqueadas</span><b>${est.BLOQUEADO}</b><span class="small muted">Dependen de datos no verificables hoy</span></div>
+    <div class="stat"><span class="eyebrow">Prompts</span><b>${N_PROMPTS}</b><span class="small muted">Uno por slide o posteo, listos para copiar</span></div>
     <div class="stat"><span class="eyebrow">Referencias</span><b>${D.investigacion.referencias.length}</b><span class="small muted">${D.investigacion.perfiles.length} referentes analizados</span></div>
   </div>
   <section class="block"><div class="spread"><h2>Lo que bloquea pasar a LISTO</h2><a class="btn" href="#anclas">Ver anclas</a></div>
@@ -514,7 +519,7 @@ R.banco = () => {
   const sel = (key, label, opts) => `<select data-set="${key}" aria-label="${label}"><option value="">${label}: todos</option>${opts.map(([v, l]) => `<option value="${esc(v)}" ${u[key] === v ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select>`;
   const byBlock = {}; list.forEach(i => (byBlock[i.bloque] = byBlock[i.bloque] || []).push(i));
   return `<header class="head"><span class="eyebrow">C001–C120 · P001–P120</span><h1>Banco de ideas</h1>
-    <p class="muted">Cada idea tiene objetivo, segmento, KPI, anclas y un prompt base. C001 y C002 tienen ficha completa; para las demás, pide «DESARROLLA» con su ID.</p></header>
+    <p class="muted">Cada idea tiene guion slide por slide, prompt de cada toma, texto en arte y caption. C001 y C002 tienen además ficha completa.</p></header>
   <div class="tabs" role="tablist">${[['C', 'Carruseles'], ['P', 'Posteos']].map(([k, l]) => `<button role="tab" aria-selected="${u.tab === k}" data-set="tab" data-val="${k}">${l} · 120</button>`).join('')}</div>
   <div class="chips-scroll" role="group" aria-label="Bloques"><button data-set="bloque" data-val="" aria-pressed="${!u.bloque}">Todos los bloques</button>${bl.map(b => `<button data-set="bloque" data-val="${b.id}" aria-pressed="${u.bloque === b.id}">${b.id} · ${esc(b.nombre.split(':')[0])}</button>`).join('')}</div>
   <div class="filters">
@@ -533,6 +538,21 @@ R.banco = () => {
   ${list.length ? '' : '<div class="notice">Ninguna idea coincide con estos filtros.</div>'}`;
 };
 
+R.prompts = () => {
+  const u = S.ui; const b = BLOQ[u.pbloque] ? u.pbloque : 'C1';
+  const list = D.ideas.filter(i => i.bloque === b);
+  const all = list.map(i => `######## ${i.id} · ${i.titulo} ########\n\n${ideaPrompts(i)}\n\nCAPTION:\n${i.guion.caption}`).join('\n\n\n');
+  const caps = list.map(i => `${i.id} · ${i.titulo}\n${i.guion.caption}`).join('\n\n---\n\n');
+  return `<header class="head"><span class="eyebrow">${N_PROMPTS} prompts · uno por slide o posteo</span><h1>Prompts por bloque</h1>
+    <p class="muted">Cada prompt sigue la plantilla de producción: anclas que hay que adjuntar, bloqueo del plato con la descripción de la carta, cámara, luz de día, continuidad y los bloques de realismo y negativo. Mientras falte la foto del plato, la generación final queda bloqueada.</p></header>
+  <div class="chips-scroll" role="group" aria-label="Bloques">${D.bloques.map(x => `<button data-set="pbloque" data-val="${x.id}" aria-pressed="${b === x.id}">${x.id} · ${esc(x.nombre.split(':')[0])}</button>`).join('')}</div>
+  <div class="spread"><div><span class="eyebrow">Bloque ${b} · ${BLOQ[b].desde}–${BLOQ[b].hasta}</span><h2>${esc(BLOQ[b].nombre)}</h2></div>
+    <div class="row">${copyBtn('Copiar todos los prompts del bloque', all, 'main')}${copyBtn('Copiar los 15 captions', caps, '')}</div></div>
+  ${list.map(i => `<section class="card"><div class="spread"><div><span class="mono" style="color:var(--olive)">${i.id}</span> ${pill(i.estado)} <span class="small muted">${i.guion.slides.length} ${i.guion.slides.length > 1 ? 'slides' : 'imagen'} · ${esc(i.estructura_label)}</span><h3 style="margin-top:4px">${esc(i.titulo)}</h3></div>
+      <div class="row"><a class="btn xs" href="#${i.id}">Abrir ficha</a>${copyBtn('Copiar prompts', ideaPrompts(i), 'main xs')}${copyBtn('Copiar caption', i.guion.caption, 'xs')}</div></div>
+    ${i.guion.slides.map(s => `<details><summary>${i.guion.slides.length > 1 ? 'Slide ' + s.n : 'Composición'} · ${esc(s.toma_nombre || '')} · ${esc(s.texto.titular === '—' ? 'sin texto' : s.texto.titular)}</summary><pre class="prompt">${esc(expand(s.prompt))}</pre><div class="row" style="margin-top:6px">${copyBtn('Copiar este prompt', expand(s.prompt), 'xs')}${copyBtn('Copiar texto', slideText(s), 'xs')}</div></details>`).join('')}
+  </section>`).join('')}`;
+};
 R.plan = () => {
   const u = S.ui;
   const rows = [...D.ideas].sort((a, b) => b.prioridad - a.prioridad || a.id.localeCompare(b.id));
@@ -585,8 +605,8 @@ R.exportar = () => `<header class="head"><span class="eyebrow">Sin perder IDs ni
   <div class="grid g2">
     <div class="card"><b>Matriz de 240 ideas (CSV)</b><p class="small muted">ID, bloque, objetivo, segmento, platos, anclas, KPI, prioridad, estado, etapa, responsable y fecha.</p><div class="row"><button class="btn main" data-exp="csv">Descargar CSV</button></div></div>
     <div class="card"><b>Base completa (JSON)</b><p class="small muted">Todo el sistema: carta, anclas, investigación, ideas y fichas. Es la fuente estructurada.</p><div class="row"><button class="btn" data-exp="json">Descargar JSON</button></div></div>
-    <div class="card"><b>Lote de prompts</b><p class="small muted">Prompts por slide de C001 y C002 y prompts base de las 240 ideas.</p><div class="row"><button class="btn" data-exp="prompts">Todos (.txt)</button><button class="btn" data-exp="promptsfull">Solo C001 y C002</button></div></div>
-    <div class="card"><b>Fichas desarrolladas (.md)</b><p class="small muted">Brief completo de C001 y C002 con textos, caption, producción y medición.</p><div class="row"><button class="btn" data-exp="md">Descargar fichas</button></div></div>
+    <div class="card"><b>Lote de prompts (.txt)</b><p class="small muted">Los ${N_PROMPTS} prompts por slide y posteo, con su caption, en el orden del banco.</p><div class="row"><button class="btn main" data-exp="prompts">Descargar todos</button></div></div>
+    <div class="card"><b>Fichas y guiones (.md)</b><p class="small muted">Las 240 piezas con guion, textos, caption y prompts; C001 y C002 con su ficha completa.</p><div class="row"><button class="btn" data-exp="md">Descargar</button></div></div>
     <div class="card"><b>Referencias (CSV)</b><p class="small muted">${D.investigacion.referencias.length} referencias con URL, autor visible, fecha de revisión y estado.</p><div class="row"><button class="btn" data-exp="refs">Descargar CSV</button></div></div>
     <div class="card"><b>Respaldo del plan</b><p class="small muted">Etapas, responsables, fechas, notas y favoritos. Úsalo para mover el trabajo entre navegadores.</p>
       <div class="row"><button class="btn" data-exp="backup">Exportar respaldo</button><button class="btn" data-act="import">Importar respaldo</button></div></div>
@@ -630,15 +650,28 @@ function refsHtml(list){
   return `<div class="refs">${list.map(([rid, uso]) => { const r = REF[rid]; if(!r) return ''; return `<article class="ref">${thumb(r.imagen, r.id, esc(r.visual))}<div class="in"><b>${esc(r.marca)}</b><span>${esc(uso || r.principio)}</span><span class="muted small">${esc(r.visual)}</span>
     <div class="row"><a class="btn xs" href="${esc(r.url)}" target="_blank" rel="noopener">Abrir</a>${copyBtn('Copiar URL', r.url, 'xs')}${r.imagen ? copyBtn('URL de imagen', r.imagen, 'xs') : ''}</div></div></article>`; }).join('')}</div>`;
 }
+function guionHtml(i){
+  const G = i.guion, n = G.slides.length;
+  const allTexts = G.slides.map(s => `Slide ${s.n}\n${slideText(s)}`).join('\n\n');
+  return `<section class="block"><div class="spread"><h3>${i.formato === 'Carrusel' ? 'Guion · ' + n + ' slides' : 'Toma única'}</h3><div class="row">${copyBtn(n > 1 ? 'Copiar todos los prompts' : 'Copiar prompt', ideaPrompts(i), 'main')}${copyBtn(n > 1 ? 'Copiar todos los textos' : 'Copiar texto', allTexts, '')}</div></div>
+    ${G.slides.map(s => { const a = (s.anclas || []).find(x => x && /^(LOC|MESA)/.test(x)); const src = a && (anchorSrc(a) || {}).src; const t = s.texto; return `<article class="slide"><div class="frame">${src ? `<img src="${esc(src)}" alt="" data-hide-err>` : ''}<span class="k">${String(s.n).padStart(2, '0')} · ${esc(s.toma_nombre || '')}</span><span class="t">${esc(t.titular === '—' ? 'Sin texto' : t.titular)}</span><span class="s">${esc(t.subtitulo || '')}</span></div>
+      <div class="info"><b>${n > 1 ? 'Slide ' + s.n : 'Composición'} · ${esc(s.toma_nombre || '')}</b>${s.accion ? `<span class="small">${esc(s.accion)}</span>` : ''}
+        <span class="small"><b>Texto en arte:</b> ${esc(t.titular === '—' ? 'sin texto (va en el caption)' : [t.titular, t.subtitulo, t.micro].filter(Boolean).join(' / '))}</span>
+        ${(s.platos_nombres || []).length ? `<span class="row">${s.platos_nombres.map(p => `<span class="chip pend">${esc(p)}</span>`).join('')}</span>` : ''}
+        <span class="mono muted">${esc(s.ficha_minima)}</span>
+        <details><summary>Prompt completo</summary><pre class="prompt">${esc(expand(s.prompt))}</pre></details>
+        <div class="row">${copyBtn('Copiar prompt', expand(s.prompt), 'main xs')}${copyBtn('Copiar texto', slideText(s), 'xs')}</div></div></article>`; }).join('')}
+    <p class="small muted">La vista previa usa la foto de ancla de fondo solo para ubicar el texto; no es la toma final.</p></section>`;
+}
 function fichaHtml(i){
   const b = BLOQ[i.bloque]; const F = D.fichas[i.id];
   const head = `<div class="spread"><span class="eyebrow">${i.id} · Bloque ${b.id} · ${esc(b.nombre)}</span><button class="btn close" data-act="close">Cerrar</button></div>
-    <header class="head"><h2 id="ficha-title">${esc(i.titulo)}</h2><div class="row">${pill(i.estado)}<span class="pill line">${esc(i.formato)} · ${esc(i.estructura_label)}</span><span class="pill line">${F ? esc(F.version) : 'Matriz v1 · 2026-10-26'}</span>
+    <header class="head"><h2 id="ficha-title">${esc(i.titulo)}</h2><div class="row">${pill(i.estado)}<span class="pill line">${esc(i.formato)} · ${esc(i.estructura_label)}</span><span class="pill line">${F ? esc(F.version) : 'Guion v1 · 2026-10-26'}</span>
       <button class="star" aria-pressed="${S.favs.has(i.id)}" data-fav="${i.id}" aria-label="Favorito">★</button>${copyBtn('Copiar ancla #' + i.id, '#' + i.id, 'xs')}</div></header>`;
   if(F) return head + fullFicha(i, F);
   const legacy = i.legado.length ? `<p class="small"><b>Solapa con legado:</b> ${i.legado.join(', ')}</p>` : '';
   return head + `
-  <div class="notice">Ficha de matriz. El guion slide por slide, los textos finales y los prompts por toma se desarrollan al pedir <b>«DESARROLLA ${i.id}»</b>.</div>
+  <div class="notice"><b>${esc(i.guion.nivel)}.</b> Cada slide trae su prompt completo y el texto en arte. El nivel de ficha completa (hallazgo con fuentes, plan visual, producción y medición detallados, como C001) se profundiza al pedir <b>«DESARROLLA ${i.id}»</b>.</div>
   <section class="card"><span class="eyebrow">Concepto y gancho</span><p style="font-family:var(--display);font-size:19px">${esc(i.gancho)}</p>${i.nota ? `<p class="small"><b>Nota:</b> ${esc(i.nota)}</p>` : ''}${legacy}</section>
   <dl class="kv">
     <dt>Objetivo principal</dt><dd>${esc(objName(i.obj1))} <span class="muted small">— ${esc(OBJ[i.obj1].porque)}</span></dd>
@@ -650,16 +683,17 @@ function fichaHtml(i){
     <dt>Esfuerzo</dt><dd>${i.esfuerzo}/5 · requiere ${i.requiere.length ? esc(i.requiere.join(', ')) : 'solo anclas de espacio'}</dd>
     <dt>Mezcla</dt><dd>${i.mezcla.map(m => ({H:'Ambiente/personas', U:'Utilidad', K:'Conversación', V:'Conversión'})[m]).join(' · ')}</dd>
   </dl>
+  ${guionHtml(i)}
+  <section class="card"><div class="spread"><h3>Caption</h3>${copyBtn('Copiar caption', i.guion.caption, 'main')}</div><p style="white-space:pre-line;font-family:var(--display)">${esc(i.guion.caption)}</p>${i.guion.nota ? `<p class="small muted">${esc(i.guion.nota)}</p>` : ''}</section>
   <section class="block"><h3>Anclas requeridas</h3><div class="tbl"><table><thead><tr><th>Tipo</th><th>Código</th><th>Estado</th></tr></thead><tbody>${i.anclas.map(a => `<tr><td>${esc(a.tipo)}</td><td class="mono">${esc(a.id)}${a.plato ? ' · ' + esc(a.plato) : ''}</td><td>${esc(a.detalle ? a.detalle + ' — ' : '')}${esc(a.estado)}</td></tr>`).join('')}</tbody></table></div></section>
   ${attachPanel(i)}
   <section class="block"><h3>Inspiración verificada (no literal)</h3>${refsHtml(i.refs.map(r => [r, '']))}</section>
-  <section class="block"><div class="spread"><h3>Prompt base de la toma principal</h3><div class="row">${copyBtn('Copiar prompt', i.prompt_base, 'main')}${copyBtn('Copiar texto', i.titulo, '')}</div></div><pre class="prompt">${esc(i.prompt_base)}</pre></section>
   <section class="block"><h3>Prioridad explicada</h3>${scoresHtml(i)}</section>
   ${planEditor(i.id)}
   <section class="card"><h3>Control de calidad antes de aprobar</h3><ul class="check small">${D.reglas.checklist.map(q => `<li><span aria-hidden="true">☐</span>${esc(q)}</li>`).join('')}</ul></section>`;
 }
 function fullFicha(i, F){
-  const allPrompts = F.slides.map(s => s.prompt).join('\n\n' + '='.repeat(60) + '\n\n');
+  const allPrompts = F.slides.map(s => expand(s.prompt)).join('\n\n' + '='.repeat(60) + '\n\n');
   const allTexts = F.slides.map(s => `Slide ${s.n}\n${[s.texto.titular, s.texto.subtitulo, s.texto.micro].filter(Boolean).join('\n')}`).join('\n\n');
   const locSrc = (anchorSrc('LOC-01') || {}).src;
   const pv = F.plan_visual, pr = F.proposito, prod = F.produccion, med = F.medicion;
@@ -683,8 +717,8 @@ function fullFicha(i, F){
       <div class="info"><b>${esc(s.nombre)}</b><span class="small"><b>Propósito:</b> ${esc(s.proposito)} · <b>Transición:</b> ${esc(s.transicion)}</span>
         <span class="small"><b>Texto en arte:</b> ${esc([s.texto.titular, s.texto.subtitulo, s.texto.micro].filter(Boolean).join(' / '))}</span>
         <span class="mono muted">${esc(s.ficha_minima)}</span>
-        <details><summary>Prompt completo de la toma</summary><pre class="prompt">${esc(s.prompt)}</pre></details>
-        <div class="row">${copyBtn('Copiar prompt de esta toma', s.prompt, 'main xs')}${copyBtn('Copiar texto', [s.texto.titular, s.texto.subtitulo, s.texto.micro].filter(Boolean).join('\n'), 'xs')}</div></div></article>`).join('')}
+        <details><summary>Prompt completo de la toma</summary><pre class="prompt">${esc(expand(s.prompt))}</pre></details>
+        <div class="row">${copyBtn('Copiar prompt de esta toma', expand(s.prompt), 'main xs')}${copyBtn('Copiar texto', [s.texto.titular, s.texto.subtitulo, s.texto.micro].filter(Boolean).join('\n'), 'xs')}</div></div></article>`).join('')}
     <p class="small muted">La vista previa usa LOC-01 de fondo solo para ubicar el texto; no representa la toma final.</p></section>
   <section class="card"><div class="spread"><h3>Caption</h3>${copyBtn('Copiar caption', F.caption, 'main')}</div><p style="white-space:pre-line;font-family:var(--display)">${esc(F.caption)}</p><p class="small"><b>CTA:</b> ${esc(F.cta)}</p></section>
   <section class="block"><h3>Producción</h3><dl class="kv"><dt>Método</dt><dd>${esc(prod.metodo)}</dd><dt>Lista de tomas</dt><dd><ol class="small" style="margin:0;padding-left:18px">${prod.tomas.map(t => `<li>${esc(t)}</li>`).join('')}</ol></dd><dt>Horario</dt><dd>${esc(prod.horario)}</dd><dt>Dificultad</dt><dd>${prod.dificultad}/5</dd><dt>Dependencias</dt><dd>${esc(prod.dependencias.join(' · '))}</dd><dt>Permisos</dt><dd>${esc(prod.permisos.join(' · '))}</dd></dl></section>
@@ -695,15 +729,16 @@ function fullFicha(i, F){
 }
 function fichaMd(id){
   const i = IDEA[id], F = D.fichas[id];
-  return `# ${id} · ${i.titulo}\n\nEstado: ${F.estado} — ${F.estado_detalle}\nVersión: ${F.version}\n\n## Gancho\n${F.gancho}\n\n## Diferencia\n${F.diferencia}\n\n## Hallazgo\n${F.insight.map(([c, t]) => `- [${c}] ${t}`).join('\n')}\n\n## Propósito\n- Problema: ${F.proposito.problema}\n- Objetivos: ${objName(F.proposito.obj1)} / ${objName(F.proposito.obj2)}\n- KPI: ${F.proposito.kpi} — ${F.proposito.kpi_motivo}\n\n## Segmento y ocasión\n${F.segmento}\n${F.ocasion}\n\n## Platos\n${F.platos_detalle.map(p => `- ${p.nombre} (${p.ancla}, PENDIENTE): ${p.carta}`).join('\n')}\n\n## Pendientes\n${F.pendientes.map(p => '- ' + p).join('\n')}\n\n## Guion\n${F.slides.map(s => `### S${String(s.n).padStart(2, '0')} · ${s.nombre}\n- Propósito: ${s.proposito}\n- Texto: ${[s.texto.titular, s.texto.subtitulo, s.texto.micro].filter(Boolean).join(' / ')}\n- Ficha mínima: ${s.ficha_minima}\n\n\`\`\`\n${s.prompt}\n\`\`\``).join('\n\n')}\n\n## Caption\n${F.caption}\n\nCTA: ${F.cta}\n\n## Producción\n${F.produccion.metodo}\n${F.produccion.tomas.map(t => '- ' + t).join('\n')}\n\n## Medición\n${F.medicion.kpi} · ${F.medicion.hipotesis}\n`;
+  if(!F) return `# ${id} · ${i.titulo}\n\nEstado: ${i.estado} · ${i.guion.nivel}\nBloque ${i.bloque} · ${i.formato} · ${i.estructura_label}\nObjetivo: ${objName(i.obj1)}${i.obj2 ? ' / ' + objName(i.obj2) : ''} · KPI: ${i.kpi_label}\nSegmento: ${segNames(i.segmentos)}\n\n## Gancho\n${i.gancho}\n${i.nota ? '\nNota: ' + i.nota + '\n' : ''}\n## Guion\n${i.guion.slides.map(s => `### ${i.guion.slides.length > 1 ? 'S' + String(s.n).padStart(2, '0') : 'Composición'} · ${s.toma_nombre}\n- Acción: ${s.accion}\n- Texto: ${slideText(s).replace(/\n/g, ' / ') || 'sin texto'}\n- Ficha mínima: ${s.ficha_minima}\n\n\`\`\`\n${expand(s.prompt)}\n\`\`\``).join('\n\n')}\n\n## Caption\n${i.guion.caption}\n`;
+  return `# ${id} · ${i.titulo}\n\nEstado: ${F.estado} — ${F.estado_detalle}\nVersión: ${F.version}\n\n## Gancho\n${F.gancho}\n\n## Diferencia\n${F.diferencia}\n\n## Hallazgo\n${F.insight.map(([c, t]) => `- [${c}] ${t}`).join('\n')}\n\n## Propósito\n- Problema: ${F.proposito.problema}\n- Objetivos: ${objName(F.proposito.obj1)} / ${objName(F.proposito.obj2)}\n- KPI: ${F.proposito.kpi} — ${F.proposito.kpi_motivo}\n\n## Segmento y ocasión\n${F.segmento}\n${F.ocasion}\n\n## Platos\n${F.platos_detalle.map(p => `- ${p.nombre} (${p.ancla}, PENDIENTE): ${p.carta}`).join('\n')}\n\n## Pendientes\n${F.pendientes.map(p => '- ' + p).join('\n')}\n\n## Guion\n${F.slides.map(s => `### S${String(s.n).padStart(2, '0')} · ${s.nombre}\n- Propósito: ${s.proposito}\n- Texto: ${[s.texto.titular, s.texto.subtitulo, s.texto.micro].filter(Boolean).join(' / ')}\n- Ficha mínima: ${s.ficha_minima}\n\n\`\`\`\n${expand(s.prompt)}\n\`\`\``).join('\n\n')}\n\n## Caption\n${F.caption}\n\nCTA: ${F.cta}\n\n## Producción\n${F.produccion.metodo}\n${F.produccion.tomas.map(t => '- ' + t).join('\n')}\n\n## Medición\n${F.medicion.kpi} · ${F.medicion.hipotesis}\n`;
 }
 
 /* ------------------------------------------------------------ exportaciones */
 function exportar(kind){
   const today = iso(new Date());
   if(kind === 'csv'){
-    const rows = [['ID', 'Bloque', 'Formato', 'Título', 'Estructura', 'Objetivo 1', 'Objetivo 2', 'Segmentos', 'Platos', 'Anclas', 'KPI', 'Esfuerzo', 'Prioridad', 'Estado', 'Etapa', 'Responsable', 'Fecha', 'Gancho', 'Nota']];
-    D.ideas.forEach(i => { const p = planOf(i.id); rows.push([i.id, i.bloque, i.formato, i.titulo, i.estructura_label, objName(i.obj1), objName(i.obj2), segNames(i.segmentos), i.platos_nombres.join('; '), i.anclas.map(a => a.id).join('; '), i.kpi_label, i.esfuerzo, i.prioridad, i.estado, etapaOf(i.id), p.responsable || '', p.fecha || '', i.gancho, i.nota]); });
+    const rows = [['ID', 'Bloque', 'Formato', 'Título', 'Estructura', 'Objetivo 1', 'Objetivo 2', 'Segmentos', 'Platos', 'Anclas', 'KPI', 'Esfuerzo', 'Prioridad', 'Estado', 'Etapa', 'Responsable', 'Fecha', 'Gancho', 'Nota', 'Slides', 'Caption']];
+    D.ideas.forEach(i => { const p = planOf(i.id); rows.push([i.id, i.bloque, i.formato, i.titulo, i.estructura_label, objName(i.obj1), objName(i.obj2), segNames(i.segmentos), i.platos_nombres.join('; '), i.anclas.map(a => a.id).join('; '), i.kpi_label, i.esfuerzo, i.prioridad, i.estado, etapaOf(i.id), p.responsable || '', p.fecha || '', i.gancho, i.nota, i.guion.slides.length, i.guion.caption]); });
     return offerFile(`origen-banco-240-${today}.csv`, toCsv(rows), 'text/csv');
   }
   if(kind === 'json') return offerFile(`origen-base-${today}.json`, JSON.stringify(D, null, 1), 'application/json');
@@ -713,10 +748,8 @@ function exportar(kind){
     return offerFile(`origen-referencias-${today}.csv`, toCsv(rows), 'text/csv');
   }
   const sep = '\n\n' + '='.repeat(80) + '\n\n';
-  const full = Object.values(D.fichas).flatMap(F => F.slides.map(s => s.prompt));
-  if(kind === 'promptsfull') return offerFile(`origen-prompts-C001-C002-${today}.txt`, full.join(sep), 'text/plain');
-  if(kind === 'prompts') return offerFile(`origen-prompts-todos-${today}.txt`, full.concat(D.ideas.filter(i => !i.ficha).map(i => i.prompt_base)).join(sep), 'text/plain');
-  if(kind === 'md') return offerFile(`origen-fichas-C001-C002-${today}.md`, Object.keys(D.fichas).map(fichaMd).join('\n\n---\n\n'), 'text/markdown');
+  if(kind === 'prompts') return offerFile(`origen-prompts-todos-${today}.txt`, D.ideas.map(i => `######## ${i.id} · ${i.titulo} ########${sep}${ideaPrompts(i)}${sep}CAPTION:\n${i.guion.caption}`).join('\n\n\n'), 'text/plain');
+  if(kind === 'md') return offerFile(`origen-fichas-guiones-${today}.md`, D.ideas.map(i => fichaMd(i.id)).join('\n\n---\n\n'), 'text/markdown');
   if(kind === 'backup') return offerFile(`origen-respaldo-plan-${today}.json`, JSON.stringify({tipo:'origen-respaldo', version:1, exportado:new Date().toISOString(), plan:S.plan, favoritos:[...S.favs]}, null, 1), 'application/json');
 }
 async function importar(file){
