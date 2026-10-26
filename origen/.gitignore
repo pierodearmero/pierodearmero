@@ -1,0 +1,6 @@
+# Fotos del local y de platos: no se publican en este repositorio público
+# (hay personas reconocibles y son activos del cliente). Colócalas aquí solo en tu copia local.
+assets/
+
+# Caché de Python
+__pycache__/

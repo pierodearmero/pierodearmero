@@ -1,0 +1,445 @@
+PIEZA: C001-S01
+NOMBRE: Portada · la mesa antes del primer almuerzo
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; copy sin aprobar
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: no aplica (toma sin comida)
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-097 — https://www.pinterest.com/pin/356558495518638245/ — Franjas de luz sobre mesa puesta: cómo se ve una mesa lista antes del servicio (S01). (no copiar la imagen)
+- REF: REF-060 — https://www.rafaelosterling.pe/ — Mano que entra al cuadro sin rostro (S06). (no copiar la imagen)
+- REF: REF-102 — https://www.pinterest.com/pin/343399540353870368/ — Ritmo de mesa compartida para el piqueo al centro (S02). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Tipografía pequeña con mucho aire (montaje de titulares). (no copiar la imagen)
+- REF: REF-075 — https://www.larosanautica.com/ — Salón diurno con mantel blanco y ventanales: credibilidad del lugar (S01, S07). (no copiar la imagen)
+
+OBJECTIVE: Make a first-time member feel the table is ready for them and that the carousel will guide the meal.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: No food in this shot. Table set exactly as in MESA-01.
+ACTION: Nothing happens: an empty, fully set table for two, chairs slightly pulled out as if waiting. No people.
+CAMERA: Seated eye level (about 110 cm), 1.2 m from the near edge of the table, slight downward tilt; main smartphone lens or 35 mm equivalent.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Table occupies the lower 60 %; the brass chandeliers and the dark wood paneling softly out of focus above; top 22 % calm and darker for the title.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. Two covers, facing each other. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: PRIMERA VEZ EN ORIGEN / Cinco decisiones para tu primer almuerzo / Desliza →
+INDICACIÓN DE MONTAJE: Titular en serif de marca, 64–72 px, crema sobre la zona oscura superior; subtítulo 30–34 px; micro 22 px abajo a la derecha. No tapar copas ni el borde del mantel.
+
+================================================================================
+
+PIEZA: C001-S02
+NOMBRE: Decisión 1 · empezar al centro
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; faltan fotos de plato
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: PENDIENTE: adjuntar PLATO-croq-01 (Croquetas de Huacho) — generación final BLOQUEADA hasta recibirla
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-097 — https://www.pinterest.com/pin/356558495518638245/ — Franjas de luz sobre mesa puesta: cómo se ve una mesa lista antes del servicio (S01). (no copiar la imagen)
+- REF: REF-060 — https://www.rafaelosterling.pe/ — Mano que entra al cuadro sin rostro (S06). (no copiar la imagen)
+- REF: REF-102 — https://www.pinterest.com/pin/343399540353870368/ — Ritmo de mesa compartida para el piqueo al centro (S02). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Tipografía pequeña con mucho aire (montaje de titulares). (no copiar la imagen)
+- REF: REF-075 — https://www.larosanautica.com/ — Salón diurno con mantel blanco y ventanales: credibilidad del lugar (S01, S07). (no copiar la imagen)
+
+OBJECTIVE: Show that the meal at ORIGEN starts by sharing something in the middle of the table.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: Croquetas de Huacho exactly as in PLATO-croq-01: same number of pieces, same crust color and texture of the crunchy quinoa, same plate, same position and quantity of the sauco mayonnaise. Nothing added.
+ACTION: The plate has just been set in the center of the table between the two covers; two small side plates still clean. No hands.
+CAMERA: 45° from above at the shorter side of the table, 60–70 cm from the plate, 50 mm equivalent.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Plate centered in the lower half; both covers visible at the frame edges; top 22 % shows the tablecloth and soft background for text.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. Two covers, facing each other. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: 1 · ¿Empiezas al centro? / Croquetas de Huacho / Quinua crocante rellena de bechamel con salchicha huachana y mayonesa de sauco.
+INDICACIÓN DE MONTAJE: Número + pregunta arriba a la izquierda; nombre del plato debajo; descripción literal de la carta en 20–22 px. Nunca sobre el plato.
+
+================================================================================
+
+PIEZA: C001-S03
+NOMBRE: Decisión 2 · algo fresco
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; faltan fotos de plato
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: PENDIENTE: adjuntar PLATO-ldt-01 (Leche de Tigre) — generación final BLOQUEADA hasta recibirla
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-097 — https://www.pinterest.com/pin/356558495518638245/ — Franjas de luz sobre mesa puesta: cómo se ve una mesa lista antes del servicio (S01). (no copiar la imagen)
+- REF: REF-060 — https://www.rafaelosterling.pe/ — Mano que entra al cuadro sin rostro (S06). (no copiar la imagen)
+- REF: REF-102 — https://www.pinterest.com/pin/343399540353870368/ — Ritmo de mesa compartida para el piqueo al centro (S02). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Tipografía pequeña con mucho aire (montaje de titulares). (no copiar la imagen)
+- REF: REF-075 — https://www.larosanautica.com/ — Salón diurno con mantel blanco y ventanales: credibilidad del lugar (S01, S07). (no copiar la imagen)
+
+OBJECTIVE: Offer a fresh, light first course that does not fill the diner before the main.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: Leche de Tigre exactly as in PLATO-ldt-01: same vessel, liquid level, fish pieces, choclo and canchita placement and quantity. No condensation, steam, garnish or herbs not in the reference.
+ACTION: The vessel rests on the near cover's plate; a spoon beside it, untouched.
+CAMERA: 45° at the near cover, 50 cm away, 50 mm equivalent; focus on the front edge of the vessel.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Vessel in the lower-left third; window light behind making the liquid glow naturally; top 22 % calm.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. Two covers, facing each other. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: 2 · ¿Algo fresco antes del fondo? / Leche de Tigre / Pescado fresco en leche de tigre con choclo y canchita.
+INDICACIÓN DE MONTAJE: Igual jerarquía que el slide 2 para que la secuencia se lea como sistema.
+
+================================================================================
+
+PIEZA: C001-S04
+NOMBRE: Decisión 3 · el fondo de la casa
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; faltan fotos de plato
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: PENDIENTE: adjuntar PLATO-lso-01 (Lomo Saltado Origen) — generación final BLOQUEADA hasta recibirla
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-097 — https://www.pinterest.com/pin/356558495518638245/ — Franjas de luz sobre mesa puesta: cómo se ve una mesa lista antes del servicio (S01). (no copiar la imagen)
+- REF: REF-060 — https://www.rafaelosterling.pe/ — Mano que entra al cuadro sin rostro (S06). (no copiar la imagen)
+- REF: REF-102 — https://www.pinterest.com/pin/343399540353870368/ — Ritmo de mesa compartida para el piqueo al centro (S02). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Tipografía pequeña con mucho aire (montaje de titulares). (no copiar la imagen)
+- REF: REF-075 — https://www.larosanautica.com/ — Salón diurno con mantel blanco y ventanales: credibilidad del lugar (S01, S07). (no copiar la imagen)
+
+OBJECTIVE: Make the house main course the clear protagonist: the dish that carries the restaurant's name.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: Lomo Saltado Origen exactly as in PLATO-lso-01: same plate, same proportion of lomo, onion and tomato, same crispy yellow potatoes and the same arroz con choclo portion and shape. Natural sheen only.
+ACTION: The plate is in front of the near cover; fork and knife at rest beside it. No hands.
+CAMERA: 45°, 55 cm from the plate, 50 mm equivalent; focus on the front of the saltado.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Plate fills the central band; the second cover and a glass softly behind; top 22 % calm.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. Two covers, facing each other. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: 3 · El fondo que lleva el nombre de la casa / Lomo Saltado Origen / Salteado al wok con crocantes papas amarillas y arroz con choclo.
+INDICACIÓN DE MONTAJE: Titular en dos líneas; no superponer sobre el arroz ni las papas.
+
+================================================================================
+
+PIEZA: C001-S05
+NOMBRE: Decisión 4 · o ármalo a tu manera
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; faltan fotos de plato
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: PENDIENTE: adjuntar PLATO-amp-01 (Ármalo · Pollo a la plancha) — generación final BLOQUEADA hasta recibirla
+- PLATO: PENDIENTE: adjuntar PLATO-g_pur-01 (Puré de Papa Amarilla) — generación final BLOQUEADA hasta recibirla
+- PLATO: PENDIENTE: adjuntar PLATO-g_ver-01 (Verduras al Vapor con Aceite de Oliva) — generación final BLOQUEADA hasta recibirla
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-097 — https://www.pinterest.com/pin/356558495518638245/ — Franjas de luz sobre mesa puesta: cómo se ve una mesa lista antes del servicio (S01). (no copiar la imagen)
+- REF: REF-060 — https://www.rafaelosterling.pe/ — Mano que entra al cuadro sin rostro (S06). (no copiar la imagen)
+- REF: REF-102 — https://www.pinterest.com/pin/343399540353870368/ — Ritmo de mesa compartida para el piqueo al centro (S02). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Tipografía pequeña con mucho aire (montaje de titulares). (no copiar la imagen)
+- REF: REF-075 — https://www.larosanautica.com/ — Salón diurno con mantel blanco y ventanales: credibilidad del lugar (S01, S07). (no copiar la imagen)
+
+OBJECTIVE: Show that the diner can compose their own plate: one protein plus two sides.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: Ármalo a Tu Manera with pollo a la plancha, puré de papas amarillas and verduras al vapor exactly as in PLATO-amp-01 (and the side references if photographed separately): same plate, same portions and arrangement as served by the kitchen. Combination pending kitchen confirmation.
+ACTION: Plate in front of the far cover, seen across the table; nothing moving.
+CAMERA: Seated eye level from the near cover looking across, 80 cm, 50 mm equivalent; shallow depth so the near glass is softly blurred.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Plate in the center-right; near glass as soft foreground frame on the left; top 22 % calm.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. Two covers, facing each other. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: 4 · ¿O prefieres armarlo? / Ármalo a Tu Manera / Pollo a la plancha, lomo al grill o pesca del día + dos acompañamientos a elección.
+INDICACIÓN DE MONTAJE: Agregar tres píldoras finas con las proteínas (texto, no iconos).
+
+================================================================================
+
+PIEZA: C001-S06
+NOMBRE: Decisión 5 · el final dulce
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; faltan fotos de plato
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: PENDIENTE: adjuntar PLATO-cvo-01 (Crema Volteada de la Abuela) — generación final BLOQUEADA hasta recibirla
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-097 — https://www.pinterest.com/pin/356558495518638245/ — Franjas de luz sobre mesa puesta: cómo se ve una mesa lista antes del servicio (S01). (no copiar la imagen)
+- REF: REF-060 — https://www.rafaelosterling.pe/ — Mano que entra al cuadro sin rostro (S06). (no copiar la imagen)
+- REF: REF-102 — https://www.pinterest.com/pin/343399540353870368/ — Ritmo de mesa compartida para el piqueo al centro (S02). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Tipografía pequeña con mucho aire (montaje de titulares). (no copiar la imagen)
+- REF: REF-075 — https://www.larosanautica.com/ — Salón diurno con mantel blanco y ventanales: credibilidad del lugar (S01, S07). (no copiar la imagen)
+
+OBJECTIVE: Make the dessert feel like the natural end of the first lunch.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: Crema Volteada de la Abuela exactly as in PLATO-cvo-01: same shape, height, caramel color and amount, same plate. No added fruit, mint, flowers or powdered sugar.
+ACTION: A real hand (consented) holds a spoon resting at the edge of the plate, just before the first bite. Natural skin, no rings.
+CAMERA: Close 3/4 view, 35 cm, 50–70 mm equivalent; focus on the caramel edge.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Dessert lower-center, hand entering from the lower right; top 22 % calm with soft background lights.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. Two covers, facing each other. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: 5 · Reserva espacio para el final / Crema Volteada de la Abuela
+INDICACIÓN DE MONTAJE: Texto breve; dejar que el caramelo hable.
+
+================================================================================
+
+PIEZA: C001-S07
+NOMBRE: Cierre · guárdalo para tu primera vez
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; faltan fotos de plato
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: PENDIENTE: adjuntar PLATO-cvo-01 (Crema Volteada de la Abuela) — generación final BLOQUEADA hasta recibirla
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-097 — https://www.pinterest.com/pin/356558495518638245/ — Franjas de luz sobre mesa puesta: cómo se ve una mesa lista antes del servicio (S01). (no copiar la imagen)
+- REF: REF-060 — https://www.rafaelosterling.pe/ — Mano que entra al cuadro sin rostro (S06). (no copiar la imagen)
+- REF: REF-102 — https://www.pinterest.com/pin/343399540353870368/ — Ritmo de mesa compartida para el piqueo al centro (S02). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Tipografía pequeña con mucho aire (montaje de titulares). (no copiar la imagen)
+- REF: REF-075 — https://www.larosanautica.com/ — Salón diurno con mantel blanco y ventanales: credibilidad del lugar (S01, S07). (no copiar la imagen)
+
+OBJECTIVE: Close the story: the same table after a calm lunch, inviting to save the carousel.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: Only the finished dessert plate from PLATO-cvo-01 with a little caramel left; napkins used and loosely folded; glasses partly full.
+ACTION: Nobody at the table; the meal is over; nothing staged messily.
+CAMERA: Same position, height and lens as slide 1.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Mirror of slide 1 so the carousel closes in a loop; top 22 % calm.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. Two covers, facing each other. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: Guárdalo para tu primer almuerzo / ORIGEN · Country Club de Villa · Chorrillos / [Horario y canal: insertar solo tras confirmación]
+INDICACIÓN DE MONTAJE: CTA de guardado; no publicar horario ni teléfono hasta confirmación escrita.
+
+================================================================================
+
+PIEZA: C002-S01
+NOMBRE: Portada · almuerzo para uno
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; copy sin aprobar
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: no aplica (toma sin comida)
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-096 — https://www.pinterest.com/pin/1114429870316457303/ — Mesa individual con franjas de luz: un almuerzo para uno (S01). (no copiar la imagen)
+- REF: REF-010 — https://www.gourmettraveller.com.au/ — Plato con el cubierto en uso: almuerzo en marcha (S02). (no copiar la imagen)
+- REF: REF-151 — https://www.pinterest.com/pin/378020962497812016/ — Mano en reposo junto al plato: calma sin prisa fingida (S07). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Fotografía con mucho aire y texto mínimo. (no copiar la imagen)
+
+OBJECTIVE: Speak to a member who has activities before or after lunch: a single cover, ready.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: No food. One cover set exactly as in MESA-01.
+ACTION: Empty single cover, napkin folded, one glass with water. No phone, no watch, no clock props.
+CAMERA: Seated eye level, 90 cm, 35 mm equivalent.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Single cover lower center; the rest of the table empty; top 22 % calm.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. One single cover, same position in every slide. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: ¿Almuerzo entre actividades? / Cinco platos que, según la carta, llegan completos / Desliza →
+INDICACIÓN DE MONTAJE: Sin iconos de reloj ni de velocidad.
+
+================================================================================
+
+PIEZA: C002-S02
+NOMBRE: Lomo Saltado Origen · todo en un plato
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; faltan fotos de plato
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: PENDIENTE: adjuntar PLATO-lso-01 (Lomo Saltado Origen) — generación final BLOQUEADA hasta recibirla
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-096 — https://www.pinterest.com/pin/1114429870316457303/ — Mesa individual con franjas de luz: un almuerzo para uno (S01). (no copiar la imagen)
+- REF: REF-010 — https://www.gourmettraveller.com.au/ — Plato con el cubierto en uso: almuerzo en marcha (S02). (no copiar la imagen)
+- REF: REF-151 — https://www.pinterest.com/pin/378020962497812016/ — Mano en reposo junto al plato: calma sin prisa fingida (S07). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Fotografía con mucho aire y texto mínimo. (no copiar la imagen)
+
+OBJECTIVE: Show a complete, generous single plate.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: Lomo Saltado Origen exactly as in PLATO-lso-01 (portion, potatoes, arroz con choclo, plate).
+ACTION: Plate at the single cover, cutlery placed ready. No hands.
+CAMERA: Top-down, 70 cm above, level, 35–50 mm equivalent.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Plate centered slightly low; napkin and glass at the edges; top 22 % tablecloth for text.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. One single cover, same position in every slide. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: Todo en un plato / Lomo Saltado Origen / Salteado al wok con papas amarillas crocantes y arroz con choclo.
+INDICACIÓN DE MONTAJE: Texto arriba; descripción literal de la carta.
+
+================================================================================
+
+PIEZA: C002-S03
+NOMBRE: Ármalo · proteína + dos
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; faltan fotos de plato
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: PENDIENTE: adjuntar PLATO-amp-01 (Ármalo · Pollo a la plancha) — generación final BLOQUEADA hasta recibirla
+- PLATO: PENDIENTE: adjuntar PLATO-g_arr-01 (Arroz con Choclo) — generación final BLOQUEADA hasta recibirla
+- PLATO: PENDIENTE: adjuntar PLATO-g_ver-01 (Verduras al Vapor con Aceite de Oliva) — generación final BLOQUEADA hasta recibirla
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-096 — https://www.pinterest.com/pin/1114429870316457303/ — Mesa individual con franjas de luz: un almuerzo para uno (S01). (no copiar la imagen)
+- REF: REF-010 — https://www.gourmettraveller.com.au/ — Plato con el cubierto en uso: almuerzo en marcha (S02). (no copiar la imagen)
+- REF: REF-151 — https://www.pinterest.com/pin/378020962497812016/ — Mano en reposo junto al plato: calma sin prisa fingida (S07). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Fotografía con mucho aire y texto mínimo. (no copiar la imagen)
+
+OBJECTIVE: Show a composed plate: one protein and two sides in one order.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: Ármalo a Tu Manera with pollo a la plancha, arroz con choclo and verduras al vapor exactly as plated by ORIGEN (PLATO-amp-01). Combination pending confirmation.
+ACTION: Plate at the single cover. No hands.
+CAMERA: Top-down, same height as slide 2.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Same framing as slide 2 for rhythm.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. One single cover, same position in every slide. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: Proteína + dos / Ármalo a Tu Manera / Pollo a la plancha, lomo al grill o pesca del día, con dos acompañamientos a elección.
+INDICACIÓN DE MONTAJE: Igual jerarquía que slide 2.
+
+================================================================================
+
+PIEZA: C002-S04
+NOMBRE: Sake Poké Bowl · un bowl completo
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; faltan fotos de plato
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: PENDIENTE: adjuntar PLATO-spk-01 (Sake Poké Bowl (salmón)) — generación final BLOQUEADA hasta recibirla
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-096 — https://www.pinterest.com/pin/1114429870316457303/ — Mesa individual con franjas de luz: un almuerzo para uno (S01). (no copiar la imagen)
+- REF: REF-010 — https://www.gourmettraveller.com.au/ — Plato con el cubierto en uso: almuerzo en marcha (S02). (no copiar la imagen)
+- REF: REF-151 — https://www.pinterest.com/pin/378020962497812016/ — Mano en reposo junto al plato: calma sin prisa fingida (S07). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Fotografía con mucho aire y texto mínimo. (no copiar la imagen)
+
+OBJECTIVE: Show a fresh complete bowl.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: Sake Poké Bowl exactly as in PLATO-spk-01: salmon, shari rice, avocado, pickled ginger, carrot, kiuri cucumber and wonton crisps in their real placement; sauces as served.
+ACTION: Bowl at the single cover with its sauces as served.
+CAMERA: Top-down, same height.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Bowl centered; rhythm identical.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. One single cover, same position in every slide. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: Un bowl completo / Sake Poké Bowl / Salmón, arroz shari, palta, jengibre encurtido, zanahoria, kiuri y crocante de wantán.
+INDICACIÓN DE MONTAJE: Igual jerarquía.
+
+================================================================================
+
+PIEZA: C002-S05
+NOMBRE: Caesar's · ensalada con proteína
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; faltan fotos de plato
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: PENDIENTE: adjuntar PLATO-cae-01 (Ensalada Caesar's) — generación final BLOQUEADA hasta recibirla
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-096 — https://www.pinterest.com/pin/1114429870316457303/ — Mesa individual con franjas de luz: un almuerzo para uno (S01). (no copiar la imagen)
+- REF: REF-010 — https://www.gourmettraveller.com.au/ — Plato con el cubierto en uso: almuerzo en marcha (S02). (no copiar la imagen)
+- REF: REF-151 — https://www.pinterest.com/pin/378020962497812016/ — Mano en reposo junto al plato: calma sin prisa fingida (S07). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Fotografía con mucho aire y texto mínimo. (no copiar la imagen)
+
+OBJECTIVE: Show a salad that already includes protein.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: Caesar's exactly as in PLATO-cae-01: lettuce mix, parmesan, bacon, croutons and grilled chicken as served.
+ACTION: Plate at the single cover.
+CAMERA: Top-down, same height.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Same rhythm.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. One single cover, same position in every slide. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: Ensalada con proteína / Caesar's / Mix de lechugas, parmesano, tocino, croutones y pollo a la plancha con salsa Caesar.
+INDICACIÓN DE MONTAJE: Igual jerarquía.
+
+================================================================================
+
+PIEZA: C002-S06
+NOMBRE: Burger Cheddar · con sus papas
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; faltan fotos de plato
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: PENDIENTE: adjuntar PLATO-bch-01 (Burger Cheddar) — generación final BLOQUEADA hasta recibirla
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-096 — https://www.pinterest.com/pin/1114429870316457303/ — Mesa individual con franjas de luz: un almuerzo para uno (S01). (no copiar la imagen)
+- REF: REF-010 — https://www.gourmettraveller.com.au/ — Plato con el cubierto en uso: almuerzo en marcha (S02). (no copiar la imagen)
+- REF: REF-151 — https://www.pinterest.com/pin/378020962497812016/ — Mano en reposo junto al plato: calma sin prisa fingida (S07). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Fotografía con mucho aire y texto mínimo. (no copiar la imagen)
+
+OBJECTIVE: Show the burger served with its fries as one order.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: Burger Cheddar exactly as in PLATO-bch-01: Angus patty, cheddar, pickles, lettuce, tomato, brioche bun, fries as served. Real stacking height.
+ACTION: Plate at the single cover.
+CAMERA: Top-down, same height.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Same rhythm.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. One single cover, same position in every slide. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: Con sus papas / Burger Cheddar / Res Angus, cheddar, pickles, lechuga y tomate en pan brioche. Sale con papas fritas.
+INDICACIÓN DE MONTAJE: Igual jerarquía.
+
+================================================================================
+
+PIEZA: C002-S07
+NOMBRE: Cierre · un plato, almuerzo resuelto
+ESTADO DE ANCLAS: PARCIAL — LOC/MESA recibidas pero sin confirmar como ORIGEN; faltan fotos de plato
+REFERENCIAS MANDATORIAS A ADJUNTAR AL MODELO VISUAL:
+- LOC: LOC-01 — salón clásico: boiserie oscura con cuadros, lámpara de bronce con pantallas negras, sillas de terciopelo burdeos, ventanales al fondo y a la derecha (archivo assets/loc/LOC-01.jpg)
+- MESA: MESA-01 — mantel beige-taupe, copas de tallo y vasos bajos, platos de cerámica crema-gris con borde, servilletas blancas (archivo assets/mesa/MESA-01.jpg)
+- PLATO: PENDIENTE: adjuntar PLATO-lso-01 (Lomo Saltado Origen) — generación final BLOQUEADA hasta recibirla
+- MARCA: no se usa en la foto; MARCA-01 solo para el diseño posterior
+INSPIRACIÓN NO LITERAL:
+- REF: REF-096 — https://www.pinterest.com/pin/1114429870316457303/ — Mesa individual con franjas de luz: un almuerzo para uno (S01). (no copiar la imagen)
+- REF: REF-010 — https://www.gourmettraveller.com.au/ — Plato con el cubierto en uso: almuerzo en marcha (S02). (no copiar la imagen)
+- REF: REF-151 — https://www.pinterest.com/pin/378020962497812016/ — Mano en reposo junto al plato: calma sin prisa fingida (S07). (no copiar la imagen)
+- REF: REF-002 — https://www.kinfolk.com/ — Fotografía con mucho aire y texto mínimo. (no copiar la imagen)
+
+OBJECTIVE: Close: the single cover after lunch, calm, no rush implied.
+SCENE: the classic dining room exactly as seen in LOC-01: dark wood wall paneling with framed pictures, a dark wood column, a brass chandelier with black lampshades, burgundy velvet armchairs with wooden frames, long white tablecloths with a beige-taupe overlay, large dark-framed windows at the back and on the right; table: the table setting exactly as seen in MESA-01: beige-taupe tablecloth, stemmed wine glasses and short clear tumblers, cream-grey stoneware plates with a rim, folded white napkins, plain steel cutlery; in the soft background the brass chandeliers with black shades, the white orchid in a brass pot on the dark wood partition and the bar with black wire stools.
+FOOD LOCK: Finished plate from PLATO-lso-01 with little left; cutlery placed together on the plate (finished signal).
+ACTION: A consented hand rests flat on the tablecloth beside the plate; no watch.
+CAMERA: Same as slide 1.
+DAYLIGHT: Midday between 12:00 and 13:30. Soft natural daylight entering from the large windows at the back and on the right, as visible in LOC-01 and MESA-01. The brass chandeliers may be on only as a faint warm accent, never as the main light. Soft shadows falling toward the camera, consistent with that window position. Neutral, true white balance on the tablecloth.
+COMPOSITION: Mirror of slide 1.
+CONTINUITY: Same table for all seven slides: MESA-01 setting (beige-taupe tablecloth, cream-grey rimmed stoneware, folded white napkins, stemmed glass + tumbler per cover), same window direction, same color temperature, same background depth. One single cover, same position in every slide. No new props, no flowers on the table, no candles, no bread basket unless ORIGEN serves it.
+REALISM: Documentary premium food photography at lunchtime inside the actual ORIGEN restaurant, Country Club de Villa, Chorrillos, Lima, Peru. Use the attached LOC and MESA images as mandatory spatial references: preserve their real architecture, furniture, table surfaces, linens, window placement and daylight direction. Use the attached authentic PLATO image as mandatory food reference: preserve the exact recipe appearance, portion, plating, plate shape, garnishes and sauce placement. Authentic natural daylight only, physically consistent shadows, true-to-life white balance, real tactile textures, subtle photographic imperfections, restrained color grading, credible camera perspective, editorial yet candid atmosphere. Composition and camera angle as specified in this shot brief. Vertical 4:5, 1080x1350. Leave the marked safe area uncluttered for typography to be added separately. No in-image text, no logos.
+NEGATIVE: Night, sunset dinner scene, candlelit dining, artificial nightclub lighting, fictional restaurant, invented ocean view, imaginary architecture, invented food ingredients or garnish, changed plating, exaggerated portion, waxy food, plastic gloss, CGI, 3D render, illustration, surreal steam, fake condensation, unrealistic bokeh, hard studio flash, heavy HDR, oversaturation, extra fingers, distorted hands, duplicated utensils or plates, floating objects, impossible shadows, gibberish typography, watermark, invented logo, copied reference photograph.
+EXPORT: 4:5 vertical, 1080x1350, no rendered text or logo.
+
+TEXTO A SUPERPONER DESPUÉS: Un plato, almuerzo resuelto / Guárdalo para el día con agenda llena / [Horario: insertar solo tras confirmación]
+INDICACIÓN DE MONTAJE: CTA de guardado; sin promesas de tiempo.
+
+================================================================================
+

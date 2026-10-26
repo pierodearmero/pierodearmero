@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Generado desde build/pagina.html por build/build_page.py: editar allí. -->
+<title>Biblioteca ORIGEN</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: carril de navegación a la izquierda (arriba en móvil) + mesa de trabajo; la ficha se abre en un panel lateral. */
+:root{
+  --paper:#F8F6F2; --surface:#FFFFFF; --sunk:#F0ECE5; --ink:#29241E; --muted:#6B6257; --line:#E3DCD1;
+  --taupe:#B3A28B; --olive:#6F6B47; --ochre:#9A7B35; --cafe:#544A40; --on-cafe:#F3EDE4;
+  --ok:#3F7046; --ok-bg:#E3EEE2; --warn:#8C6216; --warn-bg:#F5EBD6; --crit:#97372D; --crit-bg:#F5E1DD;
+  --focus:#6F6B47;
+  --display:"Lora", Georgia, "Times New Roman", serif;
+  --ui:"Lato", "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#1B1814; --surface:#24201B; --sunk:#2C2721; --ink:#EEE7DC; --muted:#B3A898; --line:#3B342B;
+  --taupe:#C8B79E; --olive:#C2BC8E; --ochre:#D7B76C; --cafe:#3A322A; --on-cafe:#F3EDE4;
+  --ok:#8CC394; --ok-bg:#24352A; --warn:#E2B865; --warn-bg:#3A301C; --crit:#E8907F; --crit-bg:#3D2420;
+  --focus:#C2BC8E; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --paper:#1B1814; --surface:#24201B; --sunk:#2C2721; --ink:#EEE7DC; --muted:#B3A898; --line:#3B342B;
+  --taupe:#C8B79E; --olive:#C2BC8E; --ochre:#D7B76C; --cafe:#3A322A; --on-cafe:#F3EDE4;
+  --ok:#8CC394; --ok-bg:#24352A; --warn:#E2B865; --warn-bg:#3A301C; --crit:#E8907F; --crit-bg:#3D2420;
+  --focus:#C2BC8E; color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--ui);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--cafe)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:500;margin:0;text-wrap:balance;line-height:1.2}
+p{margin:0} a{color:inherit} button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.eyebrow{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.mono{font-family:var(--mono);font-size:12.5px}
+.muted{color:var(--muted)} .small{font-size:13px}
+.num{font-variant-numeric:tabular-nums}
+
+/* estructura */
+.app{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+.rail{background:var(--cafe);color:var(--on-cafe);position:sticky;top:env(safe-area-inset-top,0px);height:100vh;display:flex;flex-direction:column;gap:18px;padding-block:22px;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:18px;overflow-y:auto}
+.brand{display:flex;gap:12px;align-items:center}
+.brand svg{flex:none}
+.brand b{font-family:var(--display);font-weight:500;font-size:22px;letter-spacing:.14em}
+.brand small{display:block;font-size:10px;letter-spacing:.24em;opacity:.8}
+.rail nav{display:flex;flex-direction:column;gap:2px}
+.rail nav a{display:flex;justify-content:space-between;gap:8px;text-decoration:none;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--on-cafe);opacity:.86}
+.rail nav a:hover{opacity:1;background:rgba(255,255,255,.07)}
+.rail nav a[aria-current="page"]{opacity:1;background:rgba(255,255,255,.13);font-weight:700}
+.rail nav a span{font-family:var(--mono);font-size:11.5px;opacity:.75}
+.sync{margin-top:auto;font-size:12px;line-height:1.4;border-top:1px solid rgba(255,255,255,.18);padding-top:14px;display:grid;gap:6px}
+.sync .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#D7B76C;margin-right:6px}
+.sync .dot.on{background:#8CC394}
+.main{min-width:0;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:28px}
+.head{display:grid;gap:8px;max-width:78ch}
+.head h1{font-size:clamp(28px,3.6vw,40px)}
+.head h2{font-size:clamp(22px,2.6vw,28px)}
+section.block{display:grid;gap:14px}
+.wrap>*,section.block>*,.card>*,.sheet>*{min-width:0}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g4{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:8px;align-content:start;min-width:0}
+.sunk{background:var(--sunk);border-radius:var(--r);padding:14px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.spread{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+ul.clean{margin:0;padding-left:18px;display:grid;gap:4px}
+
+/* números del panel */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:2px}
+.stat b{font-family:var(--display);font-size:32px;font-weight:500;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat.warn b{color:var(--warn)} .stat.crit b{color:var(--crit)} .stat.ok b{color:var(--ok)}
+.bar{height:8px;background:var(--sunk);border-radius:99px;overflow:hidden;position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--olive);border-radius:99px}
+.bar em{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);opacity:.55}
+
+/* pastillas */
+.pill{display:inline-flex;align-items:center;gap:5px;border-radius:99px;padding:2px 9px;font-size:11.5px;font-weight:700;letter-spacing:.04em;white-space:nowrap;border:1px solid transparent}
+.pill.PARCIAL{background:var(--warn-bg);color:var(--warn)} .pill.BLOQUEADO{background:var(--crit-bg);color:var(--crit)} .pill.LISTO{background:var(--ok-bg);color:var(--ok)}
+.pill.soft{background:var(--sunk);color:var(--muted);font-weight:400}
+.pill.line{border-color:var(--line);color:var(--muted);font-weight:400}
+.chip{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:99px;padding:3px 10px;font-size:12.5px;background:var(--surface)}
+.chip.pend{border-style:dashed}
+
+/* botones */
+.btn{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 11px;font-size:13px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{border-color:var(--ink)}
+.btn.main{background:var(--olive);border-color:var(--olive);color:var(--paper)}
+.btn.ok{background:var(--ok);border-color:var(--ok);color:var(--paper)}
+.btn.ghost{background:transparent}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn.xs{padding:3px 8px;font-size:12px}
+.star{border:0;background:none;cursor:pointer;font-size:18px;line-height:1;color:var(--taupe);padding:2px}
+.star[aria-pressed="true"]{color:var(--ochre)}
+
+/* formularios */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters input[type=search]{flex:1 1 220px;min-width:0}
+input[type=search],input[type=text],input[type=date],select,textarea{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;max-width:100%}
+textarea{width:100%;min-height:70px;resize:vertical}
+label.f{display:grid;gap:4px;font-size:12.5px;color:var(--muted)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs button{border:0;background:none;padding:9px 14px;cursor:pointer;font-size:14px;border-bottom:2px solid transparent;color:var(--muted);white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--olive);font-weight:700}
+.chips-scroll{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;min-width:0;max-width:100%}
+.chips-scroll button{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:4px 11px;font-size:12.5px;cursor:pointer;white-space:nowrap}
+.chips-scroll button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* tarjetas del banco */
+.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.idea{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);display:grid;grid-template-rows:auto 1fr auto;min-width:0;overflow:hidden}
+.idea .top{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px 0}
+.idea .id{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--olive)}
+.idea .body{padding:6px 12px 10px;display:grid;gap:6px;align-content:start;cursor:pointer}
+.idea h3{font-size:17px}
+.idea .hook{font-size:13.5px;color:var(--muted)}
+.idea .foot{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding:8px 12px;font-size:12px;color:var(--muted)}
+.idea.full{border-color:var(--olive);box-shadow:inset 3px 0 0 var(--olive)}
+.prio{display:inline-flex;align-items:center;gap:6px}
+.prio .bar{width:54px;height:6px}
+
+/* anclas */
+.asset{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:grid;min-width:0}
+.thumb{aspect-ratio:3/4;max-width:100%;background:var(--sunk);position:relative;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb img[src*="MARCA"]{object-fit:contain;padding:12px;background:var(--taupe)}
+.thumb .ph{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:14px;font-size:12.5px;color:var(--muted)}
+.thumb.missing .ph{display:grid} .thumb.missing img{display:none}
+.thumb .code{position:absolute;left:8px;top:8px;background:var(--surface);color:var(--ink);font-family:var(--mono);font-size:11.5px;padding:2px 7px;border-radius:5px}
+.asset .in{padding:12px;display:grid;gap:8px}
+.plato{display:grid;grid-template-columns:56px minmax(0,1fr);gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:8px}
+.plato .mini{width:56px;height:56px;border-radius:8px;background:var(--sunk);border:1px dashed var(--taupe);display:grid;place-items:center;overflow:hidden;font-size:10px;color:var(--muted);text-align:center}
+.plato .mini img{width:100%;height:100%;object-fit:cover}
+
+/* referencias */
+.refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.ref{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
+.ref .thumb{aspect-ratio:4/3}
+.ref .in{padding:10px;display:grid;gap:6px;align-content:start;font-size:13px}
+.ref .st{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.st.verificada,.st.diseño{color:var(--ok)} .st.solo-composición{color:var(--warn)} .st.anti-referencia,.st.posible-IA,.st.descartada{color:var(--crit)}
+
+/* tablas */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;background:var(--sunk);position:sticky;top:0}
+td.n{font-variant-numeric:tabular-nums;text-align:right}
+
+/* panel de ficha */
+.drawer{position:fixed;inset:0;z-index:40;display:flex;justify-content:flex-end;background:rgba(20,16,12,.42)}
+.drawer .sheet{background:var(--paper);width:min(980px,100%);height:100%;overflow-y:auto;padding-block:max(18px,env(safe-area-inset-top,0px)) 60px;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));display:grid;gap:22px;align-content:start;border-left:1px solid var(--line)}
+.sheet .close{position:sticky;top:0;justify-self:end;z-index:2}
+.sheet h2{font-size:clamp(24px,3vw,32px)}
+.kv{display:grid;grid-template-columns:150px minmax(0,1fr);gap:6px 14px;font-size:14px}
+.kv dt{color:var(--muted);font-size:12.5px;letter-spacing:.02em}
+.kv dd{margin:0;min-width:0}
+.slide{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);display:grid;grid-template-columns:200px minmax(0,1fr);overflow:hidden}
+.slide .frame{background:var(--cafe);color:var(--on-cafe);aspect-ratio:4/5;padding:14px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.slide .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.slide .frame .t{position:relative;font-family:var(--display);font-size:16px;line-height:1.2;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.slide .frame .k{position:relative;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.slide .frame .s{position:relative;font-size:11.5px;opacity:.95}
+.slide .info{padding:12px 14px;display:grid;gap:8px;min-width:0}
+pre.prompt{font-family:var(--mono);font-size:12px;white-space:pre-wrap;word-break:break-word;background:var(--sunk);border:1px solid var(--line);border-radius:8px;padding:12px;margin:0;max-height:300px;overflow:auto}
+details>summary{cursor:pointer;font-weight:700;font-size:13.5px;padding:4px 0}
+.cert{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background:var(--sunk);color:var(--muted);margin-right:6px}
+.cert.hecho{color:var(--ok);background:var(--ok-bg)} .cert.hipótesis{color:var(--warn);background:var(--warn-bg)} .cert.pendiente{color:var(--crit);background:var(--crit-bg)}
+.scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}
+.scores div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 8px;font-size:12.5px;align-items:center}
+.scores .bar{grid-column:1/-1;height:6px}
+.check li{list-style:none;display:flex;gap:8px}
+.check{padding:0;margin:0;display:grid;gap:6px}
+
+/* calendario */
+.weeks{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.week{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px;display:grid;gap:6px;align-content:start;min-height:120px}
+.week h4{font-family:var(--ui);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.week a{display:block;font-size:13px;text-decoration:none;border-left:3px solid var(--taupe);padding:3px 8px;background:var(--sunk);border-radius:0 6px 6px 0}
+
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:9px 16px;border-radius:99px;font-size:13px;z-index:60;opacity:0;transition:opacity .2s;pointer-events:none;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1}
+.notice{border:1px solid var(--line);border-left:4px solid var(--ochre);background:var(--surface);border-radius:var(--r);padding:12px 14px;font-size:14px}
+.notice.crit{border-left-color:var(--crit)}
+
+@media (max-width:860px){
+  .app{grid-template-columns:1fr}
+  .rail{position:sticky;top:env(safe-area-inset-top,0px);height:auto;z-index:20;flex-direction:row;align-items:center;gap:12px;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:auto;overflow-y:hidden}
+  .rail nav{flex-direction:row}
+  .rail nav a{white-space:nowrap;padding:6px 10px}
+  .rail nav a span,.brand small,.sync{display:none}
+  .brand b{font-size:17px}
+  .slide{grid-template-columns:1fr}
+  .slide .frame{max-width:260px}
+  .kv{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="rail" aria-label="Secciones">
+    <div class="brand">
+      <svg width="34" height="34" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="5"/><path d="M50 50c0-7 7-10 11-6s5 13-2 18-18 3-22-5-1-21 10-26 26 0 30 12" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
+      <div><b>ORIGEN</b><small>BIBLIOTECA EDITORIAL</small></div>
+    </div>
+    <nav id="nav"></nav>
+    <div class="sync" id="sync" aria-live="polite"></div>
+  </aside>
+  <main class="main" id="view" tabindex="-1"></main>
+</div>
+<div class="drawer" id="drawer" hidden><div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="ficha-title"></div></div>
+<div class="toast" id="toast" role="status"></div>
+<input type="file" id="fileAnchor" accept="image/png,image/jpeg,image/webp" hidden>
+<input type="file" id="fileImport" accept="application/json,.json" hidden>
+
+<script src="data/origen-data.js"></script>
+<script>
+(function(){
+"use strict";
+const D = window.ORIGEN_DATA;
+const view = document.getElementById('view');
+if(!D){ view.innerHTML = '<div class="wrap"><div class="notice crit">No se encontró <span class="mono">data/origen-data.js</span>. Ábrelo junto a la carpeta <span class="mono">data</span>.</div></div>'; return; }
+
+/* ------------------------------------------------------------ utilidades */
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const IDEA = Object.fromEntries(D.ideas.map(i => [i.id, i]));
+const REF = Object.fromEntries(D.investigacion.referencias.map(r => [r.id, r]));
+const ASSET = Object.fromEntries(D.activos.map(a => [a.id, a]));
+const BLOQ = Object.fromEntries(D.bloques.map(b => [b.id, b]));
+const OBJ = D.objetivos, SEG = D.segmentos.lista;
+const ETAPAS = ['Idea','Brief listo','Esperando anclas','En producción','En revisión','Aprobada','Publicada','Descartada'];
+const STORE = {
+  get(k, d){ try{ const v = localStorage.getItem('origen.v2.' + k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem('origen.v2.' + k, JSON.stringify(v)); return true; }catch(e){ return false; } }
+};
+const S = {
+  plan: STORE.get('plan', {}), favs: new Set(STORE.get('favs', [])),
+  ui: Object.assign({tab:'C', bloque:'', q:'', obj:'', seg:'', est:'', estado:'', kpi:'', sort:'id', fav:false, refEstado:'utiles', refPlat:'', perfilGrupo:'', planAll:false}, STORE.get('ui', {})),
+  mode:'local', db:null, assets:null, downloads:null, canWrite:null, remoteAnch:{}, localAnch:{}, objectUrls:{}, proposal:null, sharedPlanSeen:false
+};
+const saveUi = () => STORE.set('ui', S.ui);
+let toastT;
+function toast(m){ const t = document.getElementById('toast'); t.textContent = m; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 2600); }
+
+/* copiar texto: solo se informa éxito si el portapapeles lo confirma */
+const CLIPS = {v:{}, s:{}}; let clipNs = 'v', clipN = 0;
+const clip = text => { const k = clipNs + (++clipN); CLIPS[clipNs][k] = text; return k; };
+const clipGet = k => (k[0] === 's' ? CLIPS.s : CLIPS.v)[k];
+function copyBtn(label, text, cls){ return `<button class="btn ${cls||''}" data-copy="${clip(text)}">${esc(label)}</button>`; }
+function copyText(text, btn){
+  const done = () => { const o = btn.textContent; btn.textContent = 'Copiado'; btn.classList.add('ok'); setTimeout(() => { btn.textContent = o; btn.classList.remove('ok'); }, 1400); };
+  const fallback = () => manualCopy(text);
+  try{ if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done, fallback); } else fallback(); }catch(e){ fallback(); }
+}
+function manualCopy(text){
+  openSheet(`<div class="spread"><h2 id="ficha-title">Copia manual</h2><button class="btn close" data-act="close">Cerrar</button></div>
+  <p class="muted">Este navegador no permitió escribir en el portapapeles. El texto está seleccionado: usa Ctrl+C o ⌘+C.</p>
+  <textarea id="manual" style="min-height:60vh" class="mono">${esc(text)}</textarea>`);
+  const ta = document.getElementById('manual'); ta.focus(); ta.select();
+}
+/* copiar imagen propia (mismo origen). Las imágenes externas no se pueden copiar: no envían CORS. */
+function copyOwnImage(src, btn){
+  try{
+    if(!(navigator.clipboard && window.ClipboardItem)) throw new Error('sin soporte');
+    const png = fetch(src).then(r => { if(!r.ok) throw new Error('no cargó'); return r.blob(); }).then(createImageBitmap).then(bmp => {
+      const c = document.createElement('canvas'); c.width = bmp.width; c.height = bmp.height; c.getContext('2d').drawImage(bmp, 0, 0);
+      return new Promise((res, rej) => c.toBlob(b => b ? res(b) : rej(new Error('canvas')), 'image/png'));
+    });
+    navigator.clipboard.write([new ClipboardItem({'image/png': png})]).then(() => { const o = btn.textContent; btn.textContent = 'Imagen copiada'; btn.classList.add('ok'); setTimeout(() => { btn.textContent = o; btn.classList.remove('ok'); }, 1500); },
+      () => toast('El navegador no permitió copiar la imagen. Usa «Descargar».'));
+  }catch(e){ toast('Este navegador no permite copiar imágenes. Usa «Descargar».'); }
+}
+async function offerFile(name, data, mime){
+  if(S.downloads){
+    try{ await S.downloads.save({filename:name, data}); toast('Archivo entregado: ' + name); return; }
+    catch(e){ if(e && e.code === 'declined'){ toast('Descarga cancelada'); return; } }
+  }
+  try{
+    const b = data instanceof Blob ? data : new Blob([data], {type:mime || 'text/plain'});
+    const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = name; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    toast('Se pidió la descarga al navegador: ' + name);
+  }catch(e){ if(typeof data === 'string') manualCopy(data); else toast('No se pudo descargar en esta vista.'); }
+}
+const csvCell = v => { const s = String(v ?? ''); return /[",\n;]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+const toCsv = rows => '﻿' + rows.map(r => r.map(csvCell).join(',')).join('\n');
+
+/* ------------------------------------------------------------ almacenamiento de anclas locales (IndexedDB) */
+const IDB = {
+  db:null,
+  open(){ if(this.db) return Promise.resolve(this.db); return new Promise((res, rej) => { try{ const r = indexedDB.open('origen-anclas', 1); r.onupgradeneeded = () => r.result.createObjectStore('a'); r.onsuccess = () => res(this.db = r.result); r.onerror = () => rej(r.error); }catch(e){ rej(e); } }); },
+  async tx(mode, fn){ const db = await this.open(); return new Promise((res, rej) => { const t = db.transaction('a', mode); const s = t.objectStore('a'); const r = fn(s); t.oncomplete = () => res(r && r.result); t.onerror = () => rej(t.error); }); },
+  put(k, v){ return this.tx('readwrite', s => s.put(v, k)); },
+  del(k){ return this.tx('readwrite', s => s.delete(k)); },
+  async all(){ const db = await this.open(); return new Promise((res, rej) => { const out = {}; const t = db.transaction('a', 'readonly'); const c = t.objectStore('a').openCursor(); c.onsuccess = () => { const cur = c.result; if(cur){ out[cur.key] = cur.value; cur.continue(); } else res(out); }; c.onerror = () => rej(c.error); }); }
+};
+async function loadLocalAnchors(){
+  try{ const all = await IDB.all(); for(const k in all){ const v = all[k]; if(v && v.blob){ S.localAnch[k] = Object.assign({}, v, {url: URL.createObjectURL(v.blob)}); } } }catch(e){ /* sin IndexedDB: se ignora */ }
+}
+function anchorSrc(id){
+  if(S.remoteAnch[id] && S.remoteAnch[id].asset) return {src:'/_blob/' + S.remoteAnch[id].asset, where:'compartida', meta:S.remoteAnch[id]};
+  if(S.localAnch[id]) return {src:S.localAnch[id].url, where:'local', meta:S.localAnch[id]};
+  const a = ASSET[id]; if(a && a.archivo) return {src:a.archivo, where:'archivo', meta:a};
+  return null;
+}
+
+/* ------------------------------------------------------------ plan de producción (local o compartido) */
+const writeQ = {};
+function planOf(id){ return S.plan[id] || {}; }
+function etapaOf(id){ return planOf(id).etapa || (IDEA[id].estado === 'BLOQUEADO' ? 'Esperando anclas' : 'Idea'); }
+function savePlan(id, patch){
+  const entry = Object.assign({}, planOf(id), patch, {actualizado: new Date().toISOString()});
+  S.plan[id] = entry; STORE.set('plan', S.plan);
+  if(S.db && S.canWrite !== false){
+    writeQ[id] = (writeQ[id] || Promise.resolve()).then(() => S.db.doc('plan/' + id).set(entry)).catch(e => {
+      if(e && e.code === 'invalid_argument'){ S.canWrite = false; renderSync(); toast('No tienes permiso para editar el plan compartido; queda guardado solo en este navegador.'); }
+      else toast('No se pudo guardar en el plan compartido (' + (e && e.code || 'error') + ').');
+    });
+  }
+}
+async function initCaps(){
+  if(!(window.claude && typeof window.claude.use === 'function')) return;
+  const use = n => window.claude.use(n).catch(() => null);
+  const [db, user, assets, downloads] = await Promise.all([use('db'), use('user'), use('assets'), use('downloads')]);
+  S.assets = assets; S.downloads = downloads;
+  if(user){ try{ S.canWrite = await user.can('data.write'); }catch(e){} }
+  if(db){
+    S.db = db; S.mode = 'compartido';
+    db.collection('plan').onSnapshot(snap => {
+      const remote = {}; snap.docs.forEach(d => { if(d.exists) remote[d.id] = d.data(); });
+      S.sharedCount = snap.size; S.sharedPlanSeen = true;
+      S.localOnly = Object.keys(S.plan).filter(k => !remote[k]);
+      S.plan = Object.assign({}, S.plan, remote); STORE.set('plan', S.plan);
+      renderSync(); rerender();
+    }, e => { S.mode = 'local'; renderSync(); });
+    db.collection('anclas').onSnapshot(snap => {
+      const r = {}; snap.docs.forEach(d => { if(d.exists) r[d.id] = d.data(); }); S.remoteAnch = r; rerender();
+    }, () => {});
+  }
+  renderSync(); rerender();
+}
+function renderSync(){
+  const el = document.getElementById('sync');
+  const shared = S.mode === 'compartido';
+  el.innerHTML = `<div><span class="dot ${shared ? 'on' : ''}"></span><b>${shared ? 'Plan compartido' : 'Guardado en este navegador'}</b></div>
+  <div style="opacity:.8">${shared ? (S.canWrite === false ? 'Puedes ver el plan del equipo, pero no editarlo.' : 'Estados, responsables, fechas y notas se comparten con quien abre este artefacto.') : 'Estados, notas y favoritos viven solo aquí. Exporta un respaldo para moverlos.'}</div>
+  <div style="opacity:.8">Datos: ${esc(D.meta.generado)} · v${esc(D.meta.version)}</div>`;
+}
+
+/* ------------------------------------------------------------ navegación */
+const VIEWS = [
+  ['panel','Panel', () => ''], ['anclas','Anclas reales', () => D.activos.filter(a => a.tipo !== 'PLATO').length + '+' + D.activos.filter(a => a.tipo === 'PLATO').length],
+  ['carta','Carta', () => D.carta.platos.length], ['investigacion','Investigación', () => D.investigacion.referencias.length],
+  ['banco','Banco de ideas', () => D.ideas.length], ['plan','Planificador', () => ''], ['legado','Legado L001–L014', () => '14'], ['exportar','Exportar y respaldo', () => '']
+];
+function navHtml(cur){ return VIEWS.map(([k, l, c]) => `<a href="#${k}" ${k === cur ? 'aria-current="page"' : ''}>${esc(l)}<span>${esc(c())}</span></a>`).join(''); }
+let current = 'panel';
+function route(){
+  const h = (location.hash || '').slice(1);
+  if(/^[CP]\d{3}$/.test(h) && IDEA[h]){ if(current !== 'banco'){ current = 'banco'; render(); } openFicha(h); return; }
+  current = VIEWS.some(v => v[0] === h) ? h : 'panel';
+  closeSheet(true); render(); view.focus({preventScroll:true}); window.scrollTo(0, 0);
+}
+function render(){ document.getElementById('nav').innerHTML = navHtml(current); CLIPS.v = {}; clipNs = 'v'; view.innerHTML = '<div class="wrap">' + (R[current] || R.panel)() + '</div>'; wireImgs(view); }
+function rerender(){ const y = window.scrollY; render(); window.scrollTo(0, y); if(openId) refreshSheet(); }
+function wireImgs(root){
+  root.querySelectorAll('img[data-hide-err]').forEach(img => img.addEventListener('error', () => img.remove(), {once:true}));
+  root.querySelectorAll('img[data-fallback]').forEach(img => { img.addEventListener('error', () => img.closest('.thumb') && img.closest('.thumb').classList.add('missing'), {once:true}); if(img.complete && img.naturalWidth === 0 && img.src) img.closest('.thumb') && img.closest('.thumb').classList.add('missing'); });
+}
+
+/* ------------------------------------------------------------ piezas reutilizables */
+const pill = e => `<span class="pill ${esc(e)}">${esc(e)}</span>`;
+const prioBar = p => `<span class="prio num"><span class="bar"><i style="width:${p}%"></i></span>${p}</span>`;
+const objName = o => o ? (OBJ[o] ? OBJ[o].nombre : o) : '';
+const segNames = l => l.map(s => SEG[s] ? SEG[s].nombre : s).join(' · ');
+function thumb(src, code, ph){ return `<div class="thumb${src ? '' : ' missing'}">${src ? `<img src="${esc(src)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback>` : ''}<div class="ph">${ph || 'Imagen no disponible'}</div>${code ? `<span class="code">${esc(code)}</span>` : ''}</div>`; }
+function ideaCard(i){
+  const fav = S.favs.has(i.id);
+  return `<article class="idea ${i.ficha ? 'full' : ''}">
+    <div class="top"><span class="id">${i.id}</span><span class="row">${i.ficha ? '<span class="pill soft">Ficha completa</span>' : ''}${pill(i.estado)}<button class="star" aria-label="Favorito ${i.id}" aria-pressed="${fav}" data-fav="${i.id}">★</button></span></div>
+    <div class="body" data-open="${i.id}" role="button" tabindex="0" aria-label="Abrir ficha ${i.id}">
+      <h3>${esc(i.titulo)}</h3><p class="hook">${esc(i.gancho)}</p>
+      <div class="row">${i.platos_nombres.slice(0, 3).map(p => `<span class="chip pend">${esc(p)}</span>`).join('')}${i.platos_nombres.length > 3 ? `<span class="chip">+${i.platos_nombres.length - 3}</span>` : ''}</div>
+    </div>
+    <div class="foot"><span>${esc(i.estructura_label)} · ${esc(objName(i.obj1))}</span><span title="${esc(i.prioridad_explicacion)}">${prioBar(i.prioridad)}</span></div>
+  </article>`;
+}
+
+/* ------------------------------------------------------------ vistas */
+const R = {};
+R.panel = () => {
+  const m = D.meta, est = m.estados, mix = m.mezcla;
+  const top = [...D.ideas].filter(i => i.estado !== 'BLOQUEADO').sort((a, b) => b.prioridad - a.prioridad || a.id.localeCompare(b.id)).slice(0, 10);
+  const etapas = {}; D.ideas.forEach(i => { const e = etapaOf(i.id); etapas[e] = (etapas[e] || 0) + 1; });
+  const mixRow = (k, l, min) => `<div class="card"><div class="spread"><span>${l}</span><b class="num">${mix[k]} %</b></div><div class="bar" aria-label="${l}: ${mix[k]} %, mínimo ${min} %"><i style="width:${mix[k]}%"></i>${min ? `<em style="left:${min}%"></em>` : ''}</div><span class="small muted">${min ? 'Mínimo exigido: ' + min + ' %' : 'Debe existir sin volver cada caption un anuncio'}</span></div>`;
+  return `<header class="head"><span class="eyebrow">Country Club de Villa · Chorrillos · Lima</span><h1>ORIGEN, sistema editorial de almuerzo diurno</h1>
+    <p class="muted">${esc(m.nota)}</p></header>
+  <div class="stats">
+    <div class="stat"><span class="eyebrow">Ideas</span><b>${m.total}</b><span class="small muted">${m.carruseles} carruseles · ${m.posteos} posteos · 16 bloques</span></div>
+    <div class="stat ok"><span class="eyebrow">Listas</span><b>${est.LISTO}</b><span class="small muted">Requieren plato real + espacio confirmado + copy aprobado</span></div>
+    <div class="stat warn"><span class="eyebrow">Parciales</span><b>${est.PARCIAL}</b><span class="small muted">Brief e investigación listos; faltan anclas</span></div>
+    <div class="stat crit"><span class="eyebrow">Bloqueadas</span><b>${est.BLOQUEADO}</b><span class="small muted">Dependen de datos no verificables hoy</span></div>
+    <div class="stat"><span class="eyebrow">Referencias</span><b>${D.investigacion.referencias.length}</b><span class="small muted">${D.investigacion.perfiles.length} referentes analizados</span></div>
+  </div>
+  <section class="block"><div class="spread"><h2>Lo que bloquea pasar a LISTO</h2><a class="btn" href="#anclas">Ver anclas</a></div>
+    <div class="notice crit"><ul class="clean">${D.pendientes.map(p => `<li>${esc(p)}</li>`).join('')}</ul></div></section>
+  <section class="block"><h2>Reglas que no se negocian</h2>
+    <div class="grid g3">
+      <div class="card"><b>De día, siempre</b><p class="small muted">Luz natural de mediodía. Nada de noche, velas, atardeceres ni salón dramático. El servicio publicado es de 12:00 a 15:00.</p></div>
+      <div class="card"><b>Anclas reales primero</b><p class="small muted">Orden de lectura para la IA: LOC y MESA → PLATO → MARCA → REF → texto. Escribir el nombre de un archivo no es adjuntarlo.</p></div>
+      <div class="card"><b>La carta manda</b><p class="small muted">Solo platos e ingredientes de la carta de septiembre 2026. Sin microgreens, flores, humo ni espumas que no estén en la foto del plato.</p></div>
+      <div class="card"><b>Fuentes, no inventos</b><p class="small muted">Cada afirmación lleva certeza: hecho, observación, hipótesis o pendiente. Las referencias externas son moodboard, nunca prueba del local.</p></div>
+    </div></section>
+  <section class="block"><h2>Mezcla editorial del banco</h2><div class="grid g2">
+    ${mixRow('H', 'Ambiente, mesa, servicio o personas', 35)}${mixRow('U', 'Ayuda a elegir, comparar o conocer', 25)}${mixRow('K', 'Conversación, guardado o compartido', 20)}${mixRow('V', 'Conversión elegante', 0)}</div>
+    <p class="small muted">Los porcentajes se solapan: una pieza puede cumplir más de un rol.</p></section>
+  <section class="block"><div class="spread"><h2>Prioridad de producción</h2><a class="btn" href="#plan">Abrir planificador</a></div>
+    <p class="small muted">Arriba quedan las piezas que solo necesitan el espacio ya fotografiado. La explicación de cada puntaje está en su ficha.</p>
+    <div class="ideas">${top.map(ideaCard).join('')}</div></section>
+  <section class="block"><h2>Fichas desarrolladas</h2><div class="ideas">${D.ideas.filter(i => i.ficha).map(ideaCard).join('')}</div></section>
+  <section class="block"><h2>Estado del plan</h2><div class="row">${ETAPAS.map(e => `<span class="chip">${esc(e)} <b class="num">${etapas[e] || 0}</b></span>`).join('')}</div></section>`;
+};
+
+R.anclas = () => {
+  const own = D.activos.filter(a => a.tipo !== 'PLATO');
+  const platos = D.activos.filter(a => a.tipo === 'PLATO');
+  const canUp = !!S.assets;
+  const card = a => { const s = anchorSrc(a.id); return `<article class="asset">
+      ${thumb(s && s.src, a.id, 'Archivo no incluido en esta copia (el repositorio es público).<br>Adjúntalo para verlo aquí.')}
+      <div class="in"><div class="spread"><b>${esc(a.titulo)}</b><span class="pill soft">${esc(a.tipo)}</span></div>
+        <p class="small muted">${esc(a.origen)} · ${esc(a.fecha)} · ${esc(a.equipo)} · ${esc(a.resolucion)}</p>
+        <details><summary>Lo que se observa</summary><ul class="clean small">${a.observado.map(o => `<li>${esc(o)}</li>`).join('')}</ul></details>
+        <dl class="kv small"><dt>Luz</dt><dd>${esc(a.luz)}</dd><dt>Personas</dt><dd>${esc(a.personas)}</dd><dt>Estado</dt><dd>${esc(a.estado)}</dd><dt>Permiso</dt><dd>${esc(a.permiso)}</dd>
+          ${s && s.where !== 'archivo' ? `<dt>Adjunto</dt><dd>${s.where === 'compartida' ? 'Compartido con el equipo' : 'Solo en este navegador'} · ${esc(s.meta.nombre || '')}</dd>` : ''}</dl>
+        <div class="row">${s ? `<button class="btn xs" data-copyimg="${esc(s.src)}">Copiar imagen</button><button class="btn xs" data-dl-asset="${a.id}">Descargar</button>` : ''}
+          ${copyBtn('Copiar código', a.id, 'xs')}<button class="btn xs" data-attach="${a.id}">${s ? 'Sustituir' : 'Adjuntar'}</button></div></div></article>`; };
+  return `<header class="head"><span class="eyebrow">Biblioteca de anclas · primero que el banco</span><h1>Lo que prueba cómo es ORIGEN</h1>
+    <p class="muted">Cinco fotos del 27 de febrero de 2026 (iPhone 16, entre 11:16 y 12:35) muestran <b>dos ambientes distintos</b>. Hasta que el responsable confirme cuál es ORIGEN, las fichas usan el salón clásico (LOC-01, MESA-01) como ancla provisional.</p></header>
+  <div class="notice">${canUp ? 'Las fotos que adjuntes se guardan en el artefacto y las ve todo el equipo.' : (S.mode === 'compartido' ? 'Solo quien puede editar el artefacto sube fotos compartidas. Lo que adjuntes aquí queda solo en este navegador.' : 'Lo que adjuntes queda en este navegador (IndexedDB). No se sube a ningún servidor.')} Las fotos con personas reconocibles son solo referencia espacial: no se publican sin consentimiento.</div>
+  <section class="block"><h2>Espacio, mesa y marca</h2><div class="grid g3">${own.map(card).join('')}</div></section>
+  <section class="block"><div class="spread"><h2>Platos: ${platos.length} fotos pendientes</h2><span class="small muted">Ordenados por cuántas piezas los necesitan</span></div>
+    <p class="small muted">La carta no trae fotografías. Cada plato necesita su foto real (idealmente frontal, 45° y cenital) antes de generar o editar cualquier imagen que lo muestre.</p>
+    <div class="grid g3">${[...platos].sort((a, b) => b.piezas - a.piezas).map(p => { const s = anchorSrc(p.id); return `<div class="plato"><div class="mini">${s ? `<img src="${esc(s.src)}" alt="" data-hide-err>` : 'sin foto'}</div>
+      <div style="min-width:0;display:grid;gap:3px"><b class="small">${esc(p.titulo)}</b><span class="mono muted">${esc(p.id)}</span><span class="small muted">${p.piezas} piezas · ${s ? (s.where === 'compartida' ? 'compartida' : 'solo en este navegador') : 'PENDIENTE'}</span>
+      <span class="row"><button class="btn xs" data-attach="${p.id}">${s ? 'Sustituir' : 'Adjuntar'}</button>${copyBtn('Código', p.id, 'xs')}</span></div></div>`; }).join('')}</div></section>`;
+};
+
+R.carta = () => {
+  const by = {}; D.carta.platos.forEach(p => { (by[p.seccion] = by[p.seccion] || []).push(p); });
+  return `<header class="head"><span class="eyebrow">Fuente de nombres e ingredientes</span><h1>La carta de septiembre 2026</h1>
+    <p class="muted">${esc(D.carta.fuente.metodo)}. Precios en soles, vigencia por confirmar. «Piezas» indica cuántas ideas del banco usan cada plato.</p></header>
+  <div class="card"><span class="eyebrow">Promesa escrita en la carta</span><p style="font-family:var(--display);font-size:18px">“${esc(D.carta.fuente.bienvenida)}”</p></div>
+  <section class="block"><h2>Discrepancias y erratas</h2><div class="tbl"><table><thead><tr><th>ID</th><th>Tema</th><th>Detalle</th><th>Acción</th></tr></thead><tbody>
+    ${D.carta.discrepancias.map(d => `<tr><td class="mono">${d.id}</td><td>${esc(d.tema)}</td><td>${esc(d.detalle)}</td><td>${esc(d.accion)}</td></tr>`).join('')}</tbody></table></div></section>
+  ${D.carta.secciones.filter(s => by[s]).map(s => `<section class="block"><h2>${esc(s)}</h2><div class="tbl"><table><thead><tr><th>Plato</th><th>Descripción en carta</th><th>S/</th><th>Piezas</th></tr></thead><tbody>
+    ${by[s].map(p => `<tr><td><b>${esc(p.nombre)}</b><div class="mono muted">PLATO-${esc(p.clave)}-01</div></td><td>${esc(p.descripcion)}</td><td class="n">${p.precio ?? '—'}</td><td class="n">${p.piezas}</td></tr>`).join('')}</tbody></table></div></section>`).join('')}`;
+};
+
+R.investigacion = () => {
+  const I = D.investigacion, u = S.ui;
+  const grupos = ['', 'Lima', 'Internacional', 'Formato'];
+  const perf = I.perfiles.filter(p => !u.perfilGrupo || p.grupo === u.perfilGrupo);
+  const util = r => ['verificada', 'diseño', 'solo-composición'].includes(r.estado);
+  const refs = I.referencias.filter(r => (u.refEstado === 'utiles' ? util(r) : u.refEstado === 'evitar' ? !util(r) : true) && (!u.refPlat || r.plataforma.startsWith(u.refPlat)));
+  const isFramed = window.parent !== window;
+  return `<header class="head"><span class="eyebrow">Revisión del ${esc(I.fecha)}</span><h1>Investigación verificable</h1>
+    <p class="muted">${I.perfiles.length} referentes analizados y ${I.referencias.length} referencias con URL. Cada afirmación lleva su nivel de certeza.</p></header>
+  <section class="block"><h2>A. Lo que aprendimos</h2><div class="grid g2">${I.aprendizajes.map(a => `<article class="card"><div><span class="cert ${esc(a.certeza)}">${esc(a.certeza)}</span><b>${a.n}. ${esc(a.titulo)}</b></div>
+    <p class="small">${esc(a.texto)}</p><p class="small"><b>Implicación:</b> ${esc(a.implicacion)}</p>
+    <div class="small muted">${a.fuentes.map(f => `<a href="${esc(f[1])}" target="_blank" rel="noopener">${esc(f[0])}</a>`).join(' · ')}</div></article>`).join('')}</div></section>
+  <section class="block"><div class="spread"><h2>B. Matriz de referentes</h2><div class="chips-scroll" role="group" aria-label="Filtrar referentes">${grupos.map(g => `<button data-set="perfilGrupo" data-val="${g}" aria-pressed="${u.perfilGrupo === g}">${g || 'Todos'} (${g ? I.perfiles.filter(p => p.grupo === g).length : I.perfiles.length})</button>`).join('')}</div></div>
+    <div class="tbl"><table><thead><tr><th>Referente</th><th>Se observa</th><th>Principio</th><th>Aplicar en ORIGEN</th><th>Evitar</th><th>Analogía</th></tr></thead><tbody>
+    ${perf.map(p => `<tr><td><b><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.nombre)}</a></b><div class="small muted">${esc(p.grupo)} · ${esc(p.lugar)}</div><div class="mono muted">${esc(p.instagram)}</div></td><td>${esc(p.observado)}</td><td>${esc(p.principio)}</td><td>${esc(p.aplicar)}</td><td>${esc(p.evitar)}</td><td>${esc(p.analogia)}</td></tr>`).join('')}</tbody></table></div>
+    <details><summary>Sitios que no se pudieron verificar (${I.no_verificados.length})</summary><ul class="clean small">${I.no_verificados.map(n => `<li>${esc(n.nombre)} — <span class="mono">${esc(n.url)}</span> · ${esc(n.motivo)}</li>`).join('')}</ul></details></section>
+  <section class="block"><h2>C. Galería de referencias</h2>
+    <div class="filters"><div class="chips-scroll">${[['utiles', 'Utilizables'], ['evitar', 'Anti-referencias y descartes'], ['todas', 'Todas']].map(([k, l]) => `<button data-set="refEstado" data-val="${k}" aria-pressed="${u.refEstado === k}">${l}</button>`).join('')}</div>
+    <div class="chips-scroll">${[['', 'Todas las fuentes'], ['Sitio', 'Sitios oficiales'], ['Pinterest (heredado', 'Pines heredados'], ['Pinterest (búsqueda', 'Pines nuevos']].map(([k, l]) => `<button data-set="refPlat" data-val="${esc(k)}" aria-pressed="${u.refPlat === k}">${l}</button>`).join('')}</div></div>
+    <p class="small muted">${refs.length} referencias. ${isFramed ? 'El visor de artefactos bloquea imágenes de otros dominios: aquí verás la descripción que se tomó al revisarlas. Abre el original o usa la copia local del repositorio para ver miniaturas.' : 'Las miniaturas se cargan desde su sitio de origen y pueden caducar.'} «Copiar imagen» no está disponible para imágenes externas: sus servidores no lo permiten (sin CORS). Copia la URL o abre el original.</p>
+    <div class="refs">${refs.map(r => `<article class="ref">${thumb(r.imagen, r.id, esc(r.visual))}
+      <div class="in"><span class="st ${esc(r.estado)}">${esc(r.estado)} · ${esc(r.luz)}</span><b>${esc(r.marca)}</b><span>${esc(r.visual)}</span>
+      ${r.principio && r.principio !== '—' ? `<span><b>Principio:</b> ${esc(r.principio)}</span>` : ''}<span class="muted small">${esc(r.plataforma)} · ${esc(r.autor)} · revisado ${esc(r.revisado)}</span>
+      <div class="row"><a class="btn xs" href="${esc(r.url)}" target="_blank" rel="noopener">Abrir original</a>${copyBtn('Copiar URL', r.url, 'xs')}${r.imagen ? copyBtn('Copiar URL de imagen', r.imagen, 'xs') : ''}</div></div></article>`).join('')}</div></section>
+  <section class="block"><h2>D. Oportunidades para ORIGEN</h2><div class="grid g2">${I.oportunidades.map(o => `<div class="card"><div><span class="cert ${esc(o.certeza.split(' ')[0])}">${esc(o.certeza)}</span><b>${esc(o.id)} · ${esc(o.titulo)}</b></div><p class="small">${esc(o.texto)}</p></div>`).join('')}</div></section>
+  <section class="block"><h2>E. Reglas visuales transferibles, sin plagio</h2><div class="tbl"><table><thead><tr><th>Regla</th><th>Visto en</th><th>Por qué sirve</th><th>Límite</th></tr></thead><tbody>${I.reglas.map(r => `<tr><td><b>${esc(r.id)}</b> ${esc(r.regla)}</td><td>${esc(r.fuente)}</td><td>${esc(r.porque)}</td><td>${esc(r.limite)}</td></tr>`).join('')}</tbody></table></div></section>
+  <section class="block"><h2>F. Recomendaciones priorizadas</h2><div class="tbl"><table><thead><tr><th>Prioridad</th><th>Recomendación</th><th>Certeza</th></tr></thead><tbody>${I.recomendaciones.map(r => `<tr><td>${esc(r.prioridad)}</td><td>${esc(r.texto)}</td><td>${esc(r.certeza)}</td></tr>`).join('')}</tbody></table></div>
+    <div class="notice"><b>Límites de esta investigación.</b><ul class="clean small">${I.limites.map(l => `<li>${esc(l)}</li>`).join('')}</ul></div></section>`;
+};
+
+function filteredIdeas(){
+  const u = S.ui, q = u.q.trim().toLowerCase();
+  let list = D.ideas.filter(i => i.id[0] === u.tab && (!u.bloque || i.bloque === u.bloque) && (!u.obj || i.obj1 === u.obj || i.obj2 === u.obj)
+    && (!u.seg || i.segmentos.includes(u.seg)) && (!u.est || i.estructura === u.est) && (!u.estado || i.estado === u.estado) && (!u.kpi || i.kpi === u.kpi)
+    && (!u.fav || S.favs.has(i.id))
+    && (!q || [i.id, i.titulo, i.gancho, i.nota, i.platos_nombres.join(' '), i.estructura_label, BLOQ[i.bloque].nombre, etapaOf(i.id), planOf(i.id).responsable || ''].join(' ').toLowerCase().includes(q)));
+  if(u.sort === 'prio') list.sort((a, b) => b.prioridad - a.prioridad || a.id.localeCompare(b.id));
+  if(u.sort === 'esf') list.sort((a, b) => a.esfuerzo - b.esfuerzo || b.prioridad - a.prioridad);
+  return list;
+}
+R.banco = () => {
+  const u = S.ui; const list = filteredIdeas();
+  const bl = D.bloques.filter(b => b.id[0] === u.tab);
+  const ests = [...new Set(D.ideas.filter(i => i.id[0] === u.tab).map(i => i.estructura))];
+  const sel = (key, label, opts) => `<select data-set="${key}" aria-label="${label}"><option value="">${label}: todos</option>${opts.map(([v, l]) => `<option value="${esc(v)}" ${u[key] === v ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select>`;
+  const byBlock = {}; list.forEach(i => (byBlock[i.bloque] = byBlock[i.bloque] || []).push(i));
+  return `<header class="head"><span class="eyebrow">C001–C120 · P001–P120</span><h1>Banco de ideas</h1>
+    <p class="muted">Cada idea tiene objetivo, segmento, KPI, anclas y un prompt base. C001 y C002 tienen ficha completa; para las demás, pide «DESARROLLA» con su ID.</p></header>
+  <div class="tabs" role="tablist">${[['C', 'Carruseles'], ['P', 'Posteos']].map(([k, l]) => `<button role="tab" aria-selected="${u.tab === k}" data-set="tab" data-val="${k}">${l} · 120</button>`).join('')}</div>
+  <div class="chips-scroll" role="group" aria-label="Bloques"><button data-set="bloque" data-val="" aria-pressed="${!u.bloque}">Todos los bloques</button>${bl.map(b => `<button data-set="bloque" data-val="${b.id}" aria-pressed="${u.bloque === b.id}">${b.id} · ${esc(b.nombre.split(':')[0])}</button>`).join('')}</div>
+  <div class="filters">
+    <input type="search" id="q" placeholder="Buscar por ID, plato, texto, responsable…" value="${esc(u.q)}" aria-label="Buscar">
+    ${sel('obj', 'Objetivo', Object.entries(OBJ).map(([k, v]) => [k, v.nombre]))}
+    ${sel('seg', 'Segmento', Object.entries(SEG).map(([k, v]) => [k, v.nombre]))}
+    ${sel('est', 'Formato', ests.map(e => [e, D.estructuras[e]]))}
+    ${sel('estado', 'Estado', [['PARCIAL', 'PARCIAL'], ['BLOQUEADO', 'BLOQUEADO'], ['LISTO', 'LISTO']])}
+    ${sel('kpi', 'KPI', Object.entries(D.kpis))}
+    <select data-set="sort" aria-label="Orden"><option value="id" ${u.sort === 'id' ? 'selected' : ''}>Orden: ID</option><option value="prio" ${u.sort === 'prio' ? 'selected' : ''}>Orden: prioridad</option><option value="esf" ${u.sort === 'esf' ? 'selected' : ''}>Orden: menor esfuerzo</option></select>
+    <button class="btn" data-toggle="fav" aria-pressed="${u.fav}">${u.fav ? '★ Solo favoritos' : '☆ Favoritos'}</button>
+    <button class="btn ghost" data-act="clear">Limpiar filtros</button></div>
+  <p class="small muted num">${list.length} de 120 ${u.tab === 'C' ? 'carruseles' : 'posteos'}</p>
+  ${u.sort === 'id' ? Object.keys(byBlock).map(b => `<section class="block"><div><span class="eyebrow">Bloque ${b} · ${BLOQ[b].desde}–${BLOQ[b].hasta}</span><h2>${esc(BLOQ[b].nombre)}</h2></div><div class="ideas">${byBlock[b].map(ideaCard).join('')}</div></section>`).join('')
+    : `<div class="ideas">${list.map(ideaCard).join('')}</div>`}
+  ${list.length ? '' : '<div class="notice">Ninguna idea coincide con estos filtros.</div>'}`;
+};
+
+R.plan = () => {
+  const u = S.ui;
+  const rows = [...D.ideas].sort((a, b) => b.prioridad - a.prioridad || a.id.localeCompare(b.id));
+  const shown = u.planAll ? rows : rows.slice(0, 40);
+  const start = mondayOf(new Date());
+  const weeks = Array.from({length:8}, (_, k) => { const d = new Date(start); d.setDate(d.getDate() + 7 * k); return d; });
+  const inWeek = (w) => { const end = new Date(w); end.setDate(end.getDate() + 7); return D.ideas.filter(i => { const f = planOf(i.id).fecha; if(!f) return false; const d = new Date(f + 'T12:00:00'); return d >= w && d < end; }).sort((a, b) => planOf(a.id).fecha.localeCompare(planOf(b.id).fecha)); };
+  const P = S.proposal;
+  const canEdit = !(S.mode === 'compartido' && S.canWrite === false);
+  return `<header class="head"><span class="eyebrow">Comparador · orden de producción · calendario</span><h1>Planificador</h1>
+    <p class="muted">Prioridad = anclas disponibles, facilidad, capacidad de mostrar ORIGEN real, objetivo claro y relevancia para socios (14 % c/u), originalidad (12 %), deseabilidad visual (10 %) y diferenciación (8 %).</p></header>
+  ${S.mode === 'compartido' && S.localOnly && S.localOnly.length && canEdit ? `<div class="notice">Tienes ${S.localOnly.length} entradas del plan guardadas solo en este navegador. <button class="btn xs" data-act="pushlocal">Subirlas al plan compartido</button></div>` : ''}
+  <section class="block"><div class="spread"><h2>Calendario de 8 semanas</h2>
+    <div class="row">${canEdit ? `<button class="btn" data-act="propose">Proponer fechas</button>` : ''}</div></div>
+    ${P ? `<div class="notice"><b>Propuesta (aún no aplicada):</b> ${P.length} piezas sin fecha, dos carruseles y dos posteos por semana, alternando objetivos y evitando bloqueadas.
+      <ol class="small" style="margin:8px 0 0;padding-left:20px">${P.map(x => `<li><span class="mono">${x.id}</span> · ${esc(x.fecha)} · ${esc(IDEA[x.id].titulo)}</li>`).join('')}</ol>
+      <div class="row" style="margin-top:8px"><button class="btn main" data-act="applyprop">Aplicar propuesta</button><button class="btn" data-act="dropprop">Descartar</button></div></div>` : ''}
+    <div class="weeks">${weeks.map((w, k) => { const items = inWeek(w); return `<div class="week"><h4>Semana ${k + 1} · ${fmtDate(w)}</h4>${items.map(i => `<a href="#${i.id}"><span class="mono">${i.id}</span> ${esc(planOf(i.id).fecha.slice(5))} · ${esc(i.titulo)}</a>`).join('') || '<span class="small muted">Sin piezas asignadas</span>'}</div>`; }).join('')}</div></section>
+  <section class="block"><div class="spread"><h2>Comparador</h2><button class="btn" data-toggle="planAll">${u.planAll ? 'Ver las 40 primeras' : 'Ver las 240'}</button></div>
+    <div class="tbl"><table><thead><tr><th>ID</th><th>Pieza</th><th>Impacto</th><th>Facilidad</th><th>Alineación</th><th>Anclas</th><th>Prioridad</th><th>Estado</th><th>Etapa</th><th>Responsable</th><th>Fecha</th></tr></thead><tbody>
+    ${shown.map(i => { const p = planOf(i.id), s = i.puntajes; return `<tr><td class="mono"><a href="#${i.id}">${i.id}</a></td><td>${esc(i.titulo)}</td><td class="n">${s.estrategia}</td><td class="n">${s.facilidad}</td><td class="n">${((s.relevancia + s.origen_real) / 2).toFixed(1)}</td><td class="n">${s.anclas}</td><td class="n">${i.prioridad}</td><td>${pill(i.estado)}</td>
+      <td><select data-plan="${i.id}" data-field="etapa" aria-label="Etapa ${i.id}" ${canEdit ? '' : 'disabled'}>${ETAPAS.map(e => `<option ${etapaOf(i.id) === e ? 'selected' : ''}>${e}</option>`).join('')}</select></td>
+      <td><input type="text" data-plan="${i.id}" data-field="responsable" value="${esc(p.responsable || '')}" aria-label="Responsable ${i.id}" size="10" ${canEdit ? '' : 'disabled'}></td>
+      <td><input type="date" data-plan="${i.id}" data-field="fecha" value="${esc(p.fecha || '')}" aria-label="Fecha ${i.id}" ${canEdit ? '' : 'disabled'}></td></tr>`; }).join('')}</tbody></table></div></section>`;
+};
+function mondayOf(d){ const x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); const wd = (x.getDay() + 6) % 7; x.setDate(x.getDate() - wd); return x; }
+const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+const fmtDate = d => d.toLocaleDateString('es-PE', {day:'numeric', month:'short'});
+function propose(){
+  const free = D.ideas.filter(i => i.estado !== 'BLOQUEADO' && !planOf(i.id).fecha && etapaOf(i.id) !== 'Descartada').sort((a, b) => b.prioridad - a.prioridad || a.id.localeCompare(b.id));
+  const C = free.filter(i => i.id[0] === 'C'), Pp = free.filter(i => i.id[0] === 'P');
+  const start = mondayOf(new Date()); const out = []; const used = new Set();
+  const pick = (pool, w) => { const objs = new Set(out.filter(x => x.w === w).map(x => IDEA[x.id].obj1)); let c = pool.find(i => !used.has(i.id) && !objs.has(i.obj1)) || pool.find(i => !used.has(i.id)); if(c) used.add(c.id); return c; };
+  for(let w = 0; w < 8; w++){
+    [[C, 1], [Pp, 2], [C, 3], [Pp, 5]].forEach(([pool, off]) => { const c = pick(pool, w); if(c){ const d = new Date(start); d.setDate(d.getDate() + 7 * w + off); out.push({id:c.id, fecha:iso(d), w}); } });
+  }
+  return out;
+}
+
+R.legado = () => `<header class="head"><span class="eyebrow">HTML anterior · diagnóstico</span><h1>Los 14 conceptos heredados</h1>
+    <p class="muted">Se conservan como L001–L014. Sus funciones de copia fueron el punto de partida. Abajo, qué se corrigió y con qué ideas nuevas se solapan.</p></header>
+  <div class="notice crit"><b>Problemas globales del archivo anterior</b><ul class="clean small">${D.legado.globales.map(g => `<li>${esc(g)}</li>`).join('')}</ul></div>
+  <div class="grid g2">${D.legado.ideas.map(L => `<article class="card"><div class="spread"><span class="mono">${L.id}</span><span class="pill soft">${esc(L.formato)}</span></div><h3>${esc(L.nombre)}</h3>
+    <div class="row">${L.platos.map(p => `<span class="chip">${esc(p)}</span>`).join('')}</div>
+    <ul class="clean small">${L.problemas.map(p => `<li>${esc(p)}</li>`).join('')}</ul>
+    <div class="small"><b>Se solapa con:</b> ${L.solapa.map(s => `<a href="#${s}" class="mono">${s}</a>`).join(' · ')}</div></article>`).join('')}</div>`;
+
+R.exportar = () => `<header class="head"><span class="eyebrow">Sin perder IDs ni enlaces</span><h1>Exportar y respaldo</h1>
+    <p class="muted">${S.downloads ? 'Las descargas piden tu confirmación.' : 'Si el navegador bloquea una descarga, el contenido se abre para copiarlo.'}</p></header>
+  <div class="grid g2">
+    <div class="card"><b>Matriz de 240 ideas (CSV)</b><p class="small muted">ID, bloque, objetivo, segmento, platos, anclas, KPI, prioridad, estado, etapa, responsable y fecha.</p><div class="row"><button class="btn main" data-exp="csv">Descargar CSV</button></div></div>
+    <div class="card"><b>Base completa (JSON)</b><p class="small muted">Todo el sistema: carta, anclas, investigación, ideas y fichas. Es la fuente estructurada.</p><div class="row"><button class="btn" data-exp="json">Descargar JSON</button></div></div>
+    <div class="card"><b>Lote de prompts</b><p class="small muted">Prompts por slide de C001 y C002 y prompts base de las 240 ideas.</p><div class="row"><button class="btn" data-exp="prompts">Todos (.txt)</button><button class="btn" data-exp="promptsfull">Solo C001 y C002</button></div></div>
+    <div class="card"><b>Fichas desarrolladas (.md)</b><p class="small muted">Brief completo de C001 y C002 con textos, caption, producción y medición.</p><div class="row"><button class="btn" data-exp="md">Descargar fichas</button></div></div>
+    <div class="card"><b>Referencias (CSV)</b><p class="small muted">${D.investigacion.referencias.length} referencias con URL, autor visible, fecha de revisión y estado.</p><div class="row"><button class="btn" data-exp="refs">Descargar CSV</button></div></div>
+    <div class="card"><b>Respaldo del plan</b><p class="small muted">Etapas, responsables, fechas, notas y favoritos. Úsalo para mover el trabajo entre navegadores.</p>
+      <div class="row"><button class="btn" data-exp="backup">Exportar respaldo</button><button class="btn" data-act="import">Importar respaldo</button></div></div>
+  </div>`;
+
+/* ------------------------------------------------------------ ficha */
+let openId = null;
+function sheetHtml(fn){ CLIPS.s = {}; clipNs = 's'; try{ return fn(); } finally { clipNs = 'v'; } }
+function openSheet(html){ const d = document.getElementById('drawer'); const sh = document.getElementById('sheet'); sh.innerHTML = html; wireImgs(sh); d.hidden = false; document.body.style.overflow = 'hidden'; const c = d.querySelector('.close'); c && c.focus(); }
+function closeSheet(silent){ const d = document.getElementById('drawer'); if(d.hidden) return; d.hidden = true; document.body.style.overflow = ''; openId = null; if(!silent && /^#[CP]\d{3}$/.test(location.hash)) history.replaceState(null, '', '#' + current); }
+function openFicha(id){ openId = id; openSheet(sheetHtml(() => fichaHtml(IDEA[id]))); }
+function refreshSheet(){ const sh = document.getElementById('sheet'); const y = sh.scrollTop; sh.innerHTML = sheetHtml(() => fichaHtml(IDEA[openId])); wireImgs(sh); sh.scrollTop = y; }
+function anchorList(i, platos){
+  const items = []; const seen = new Set();
+  i.anclas.forEach(a => { if(seen.has(a.id)) return; seen.add(a.id); if(['LOC', 'MESA', 'PLATO'].includes(a.tipo) || ASSET[a.id]) items.push(a); });
+  (platos || []).forEach(p => { const id = 'PLATO-' + p + '-01'; if(!seen.has(id)){ seen.add(id); items.push({tipo:'PLATO', id, estado:'PENDIENTE'}); } });
+  return items;
+}
+function attachPanel(i, extraPlatos){
+  const items = anchorList(i, extraPlatos);
+  return `<section class="block"><h3>Archivos que debes adjuntar físicamente al generador</h3>
+    <p class="small muted">Escribir el código en el prompt no basta: sube estos archivos junto al prompt. Sin la foto del plato, la generación final queda bloqueada.</p>
+    <div class="grid g4">${items.map(a => { const s = anchorSrc(a.id); const at = ASSET[a.id] || {}; return `<div class="asset">${thumb(s && s.src, a.id, a.tipo === 'PLATO' ? 'PENDIENTE: falta foto real' : 'No incluido en esta copia')}
+      <div class="in small"><b>${esc(at.titulo || a.plato || a.id)}</b><span class="muted">${s ? (s.where === 'archivo' ? esc(at.estado || '') : s.where === 'compartida' ? 'Adjunto compartido' : 'Adjunto en este navegador') : 'PENDIENTE'}</span>
+      <div class="row">${s ? `<button class="btn xs" data-copyimg="${esc(s.src)}">Copiar imagen</button><button class="btn xs" data-dl-asset="${a.id}">Descargar</button>` : `<button class="btn xs" data-attach="${a.id}">Adjuntar</button>`}</div></div></div>`; }).join('')}</div></section>`;
+}
+function planEditor(id){
+  const p = planOf(id); const canEdit = !(S.mode === 'compartido' && S.canWrite === false);
+  return `<section class="card"><div class="spread"><h3>Producción y seguimiento</h3><span class="small muted">${S.mode === 'compartido' ? 'Se comparte con el equipo' : 'Guardado en este navegador'}${p.actualizado ? ' · ' + esc(p.actualizado.slice(0, 16).replace('T', ' ')) : ''}</span></div>
+    <div class="grid g3"><label class="f">Etapa<select data-plan="${id}" data-field="etapa" ${canEdit ? '' : 'disabled'}>${ETAPAS.map(e => `<option ${etapaOf(id) === e ? 'selected' : ''}>${e}</option>`).join('')}</select></label>
+      <label class="f">Responsable<input type="text" data-plan="${id}" data-field="responsable" value="${esc(p.responsable || '')}" ${canEdit ? '' : 'disabled'}></label>
+      <label class="f">Fecha de publicación<input type="date" data-plan="${id}" data-field="fecha" value="${esc(p.fecha || '')}" ${canEdit ? '' : 'disabled'}></label>
+      <label class="f">Versión<input type="text" data-plan="${id}" data-field="version" value="${esc(p.version || '')}" placeholder="v1" ${canEdit ? '' : 'disabled'}></label></div>
+    <label class="f">Notas<textarea data-plan="${id}" data-field="notas" ${canEdit ? '' : 'disabled'}>${esc(p.notas || '')}</textarea></label></section>`;
+}
+function scoresHtml(i){
+  const L = {originalidad:'Originalidad', relevancia:'Relevancia para socios', origen_real:'Muestra ORIGEN real', estrategia:'Objetivo estratégico', deseabilidad:'Deseabilidad visual', facilidad:'Facilidad', anclas:'Anclas disponibles', diferenciacion:'Diferenciación'};
+  return `<div class="scores">${Object.entries(i.puntajes).map(([k, v]) => `<div><span>${L[k]}</span><b class="num">${v}/5</b><span class="bar"><i style="width:${v * 20}%"></i></span></div>`).join('')}</div><p class="small muted">${esc(i.prioridad_explicacion)}</p>`;
+}
+function refsHtml(list){
+  return `<div class="refs">${list.map(([rid, uso]) => { const r = REF[rid]; if(!r) return ''; return `<article class="ref">${thumb(r.imagen, r.id, esc(r.visual))}<div class="in"><b>${esc(r.marca)}</b><span>${esc(uso || r.principio)}</span><span class="muted small">${esc(r.visual)}</span>
+    <div class="row"><a class="btn xs" href="${esc(r.url)}" target="_blank" rel="noopener">Abrir</a>${copyBtn('Copiar URL', r.url, 'xs')}${r.imagen ? copyBtn('URL de imagen', r.imagen, 'xs') : ''}</div></div></article>`; }).join('')}</div>`;
+}
+function fichaHtml(i){
+  const b = BLOQ[i.bloque]; const F = D.fichas[i.id];
+  const head = `<div class="spread"><span class="eyebrow">${i.id} · Bloque ${b.id} · ${esc(b.nombre)}</span><button class="btn close" data-act="close">Cerrar</button></div>
+    <header class="head"><h2 id="ficha-title">${esc(i.titulo)}</h2><div class="row">${pill(i.estado)}<span class="pill line">${esc(i.formato)} · ${esc(i.estructura_label)}</span><span class="pill line">${F ? esc(F.version) : 'Matriz v1 · 2026-10-26'}</span>
+      <button class="star" aria-pressed="${S.favs.has(i.id)}" data-fav="${i.id}" aria-label="Favorito">★</button>${copyBtn('Copiar ancla #' + i.id, '#' + i.id, 'xs')}</div></header>`;
+  if(F) return head + fullFicha(i, F);
+  const legacy = i.legado.length ? `<p class="small"><b>Solapa con legado:</b> ${i.legado.join(', ')}</p>` : '';
+  return head + `
+  <div class="notice">Ficha de matriz. El guion slide por slide, los textos finales y los prompts por toma se desarrollan al pedir <b>«DESARROLLA ${i.id}»</b>.</div>
+  <section class="card"><span class="eyebrow">Concepto y gancho</span><p style="font-family:var(--display);font-size:19px">${esc(i.gancho)}</p>${i.nota ? `<p class="small"><b>Nota:</b> ${esc(i.nota)}</p>` : ''}${legacy}</section>
+  <dl class="kv">
+    <dt>Objetivo principal</dt><dd>${esc(objName(i.obj1))} <span class="muted small">— ${esc(OBJ[i.obj1].porque)}</span></dd>
+    ${i.obj2 ? `<dt>Objetivo secundario</dt><dd>${esc(objName(i.obj2))}</dd>` : ''}
+    <dt>KPI principal</dt><dd>${esc(i.kpi_label)}</dd>
+    <dt>Segmento (hipótesis)</dt><dd>${esc(segNames(i.segmentos))}</dd>
+    <dt>Formato</dt><dd>${esc(i.estructura_label)}${i.formato === 'Carrusel' ? ' · 5–7 slides' : ' · una composición'} · 4:5 · 1080×1350</dd>
+    <dt>Platos de carta</dt><dd>${i.platos_nombres.length ? i.platos_nombres.map(p => `<span class="chip pend">${esc(p)}</span>`).join(' ') : '<span class="muted">Sin plato: pieza de espacio, servicio o diseño</span>'}</dd>
+    <dt>Esfuerzo</dt><dd>${i.esfuerzo}/5 · requiere ${i.requiere.length ? esc(i.requiere.join(', ')) : 'solo anclas de espacio'}</dd>
+    <dt>Mezcla</dt><dd>${i.mezcla.map(m => ({H:'Ambiente/personas', U:'Utilidad', K:'Conversación', V:'Conversión'})[m]).join(' · ')}</dd>
+  </dl>
+  <section class="block"><h3>Anclas requeridas</h3><div class="tbl"><table><thead><tr><th>Tipo</th><th>Código</th><th>Estado</th></tr></thead><tbody>${i.anclas.map(a => `<tr><td>${esc(a.tipo)}</td><td class="mono">${esc(a.id)}${a.plato ? ' · ' + esc(a.plato) : ''}</td><td>${esc(a.detalle ? a.detalle + ' — ' : '')}${esc(a.estado)}</td></tr>`).join('')}</tbody></table></div></section>
+  ${attachPanel(i)}
+  <section class="block"><h3>Inspiración verificada (no literal)</h3>${refsHtml(i.refs.map(r => [r, '']))}</section>
+  <section class="block"><div class="spread"><h3>Prompt base de la toma principal</h3><div class="row">${copyBtn('Copiar prompt', i.prompt_base, 'main')}${copyBtn('Copiar texto', i.titulo, '')}</div></div><pre class="prompt">${esc(i.prompt_base)}</pre></section>
+  <section class="block"><h3>Prioridad explicada</h3>${scoresHtml(i)}</section>
+  ${planEditor(i.id)}
+  <section class="card"><h3>Control de calidad antes de aprobar</h3><ul class="check small">${D.reglas.checklist.map(q => `<li><span aria-hidden="true">☐</span>${esc(q)}</li>`).join('')}</ul></section>`;
+}
+function fullFicha(i, F){
+  const allPrompts = F.slides.map(s => s.prompt).join('\n\n' + '='.repeat(60) + '\n\n');
+  const allTexts = F.slides.map(s => `Slide ${s.n}\n${[s.texto.titular, s.texto.subtitulo, s.texto.micro].filter(Boolean).join('\n')}`).join('\n\n');
+  const locSrc = (anchorSrc('LOC-01') || {}).src;
+  const pv = F.plan_visual, pr = F.proposito, prod = F.produccion, med = F.medicion;
+  return `
+  <div class="notice"><b>Estado: ${esc(F.estado)}.</b> ${esc(F.estado_detalle)}</div>
+  <section class="card"><span class="eyebrow">Concepto y gancho</span><p style="font-family:var(--display);font-size:20px">${esc(F.gancho)}</p><p class="small"><b>Diferencia creativa:</b> ${esc(F.diferencia)}</p></section>
+  <section class="block"><h3>Hallazgo</h3><ul class="clean">${F.insight.map(([c, t]) => `<li><span class="cert ${esc(c)}">${esc(c)}</span>${esc(t)}</li>`).join('')}</ul></section>
+  <dl class="kv">
+    <dt>Problema</dt><dd>${esc(pr.problema)}</dd><dt>Objetivos</dt><dd>${esc(objName(pr.obj1))} · ${esc(objName(pr.obj2))}</dd><dt>Etapa</dt><dd>${esc(pr.etapa)}</dd>
+    <dt>KPI principal</dt><dd>${esc(pr.kpi)} — ${esc(pr.kpi_motivo)}</dd><dt>KPI secundarios</dt><dd>${esc(pr.kpis2.join(' · '))}</dd>
+    <dt>Segmento</dt><dd>${esc(F.segmento)}</dd><dt>Ocasión</dt><dd>${esc(F.ocasion)}</dd>
+    <dt>Platos exactos</dt><dd>${F.platos_detalle.map(p => `<div><b>${esc(p.nombre)}</b> <span class="mono muted">${esc(p.ancla)} · PENDIENTE</span><div class="small muted">${esc(p.carta)}</div></div>`).join('')}</dd>
+    <dt>Espacios</dt><dd>${F.espacios.map(e => `<span class="chip">${esc(e)} · provisional</span>`).join(' ')}</dd>
+    <dt>Datos pendientes</dt><dd><ul class="clean small">${F.pendientes.map(p => `<li>${esc(p)}</li>`).join('')}</ul></dd>
+  </dl>
+  ${attachPanel(i, F.platos)}
+  <section class="block"><h3>Inspiración verificada</h3>${refsHtml(F.refs.filter(r => r.id).map(r => [r.id, r.uso]))}</section>
+  <section class="block"><h3>Plan visual</h3><dl class="kv"><dt>Proporción</dt><dd>${esc(pv.proporcion)}</dd><dt>Composición</dt><dd>${esc(pv.composicion)}</dd><dt>Luz</dt><dd>${esc(pv.luz)}</dd><dt>Continuidad</dt><dd>${esc(pv.continuidad)}</dd><dt>Textura</dt><dd>${esc(pv.textura)}</dd><dt>Manos</dt><dd>${esc(pv.manos)}</dd><dt>Cámara</dt><dd>${esc(pv.camara)}</dd></dl></section>
+  <section class="block"><div class="spread"><h3>Guion · ${F.slides.length} slides</h3><div class="row">${copyBtn('Copiar todos los prompts', allPrompts, 'main')}${copyBtn('Copiar todos los textos', allTexts, '')}</div></div>
+    ${F.slides.map(s => `<article class="slide"><div class="frame">${locSrc ? `<img src="${esc(locSrc)}" alt="" data-hide-err>` : ''}<span class="k">${String(s.n).padStart(2, '0')} · ${esc(s.loc)}</span><span class="t">${esc(s.texto.titular)}</span><span class="s">${esc(s.texto.subtitulo)}</span></div>
+      <div class="info"><b>${esc(s.nombre)}</b><span class="small"><b>Propósito:</b> ${esc(s.proposito)} · <b>Transición:</b> ${esc(s.transicion)}</span>
+        <span class="small"><b>Texto en arte:</b> ${esc([s.texto.titular, s.texto.subtitulo, s.texto.micro].filter(Boolean).join(' / '))}</span>
+        <span class="mono muted">${esc(s.ficha_minima)}</span>
+        <details><summary>Prompt completo de la toma</summary><pre class="prompt">${esc(s.prompt)}</pre></details>
+        <div class="row">${copyBtn('Copiar prompt de esta toma', s.prompt, 'main xs')}${copyBtn('Copiar texto', [s.texto.titular, s.texto.subtitulo, s.texto.micro].filter(Boolean).join('\n'), 'xs')}</div></div></article>`).join('')}
+    <p class="small muted">La vista previa usa LOC-01 de fondo solo para ubicar el texto; no representa la toma final.</p></section>
+  <section class="card"><div class="spread"><h3>Caption</h3>${copyBtn('Copiar caption', F.caption, 'main')}</div><p style="white-space:pre-line;font-family:var(--display)">${esc(F.caption)}</p><p class="small"><b>CTA:</b> ${esc(F.cta)}</p></section>
+  <section class="block"><h3>Producción</h3><dl class="kv"><dt>Método</dt><dd>${esc(prod.metodo)}</dd><dt>Lista de tomas</dt><dd><ol class="small" style="margin:0;padding-left:18px">${prod.tomas.map(t => `<li>${esc(t)}</li>`).join('')}</ol></dd><dt>Horario</dt><dd>${esc(prod.horario)}</dd><dt>Dificultad</dt><dd>${prod.dificultad}/5</dd><dt>Dependencias</dt><dd>${esc(prod.dependencias.join(' · '))}</dd><dt>Permisos</dt><dd>${esc(prod.permisos.join(' · '))}</dd></dl></section>
+  <section class="block"><h3>Medición</h3><dl class="kv"><dt>KPI</dt><dd>${esc(med.kpi)}</dd><dt>Secundarios</dt><dd>${esc(med.secundarios.join(' · '))}</dd><dt>Hipótesis</dt><dd>${esc(med.hipotesis)}</dd><dt>Comparación</dt><dd>${esc(med.comparacion)}</dd></dl></section>
+  <section class="block"><h3>Prioridad explicada</h3>${scoresHtml(i)}</section>
+  ${planEditor(i.id)}
+  <section class="card"><h3>Control de calidad</h3><ul class="check small">${F.checklist.map(c => `<li><span class="cert ${c.estado === 'ok' ? 'hecho' : c.estado === 'pendiente' ? 'pendiente' : 'hipótesis'}">${esc(c.estado)}</span>${esc(c.pregunta)}</li>`).join('')}</ul></section>`;
+}
+function fichaMd(id){
+  const i = IDEA[id], F = D.fichas[id];
+  return `# ${id} · ${i.titulo}\n\nEstado: ${F.estado} — ${F.estado_detalle}\nVersión: ${F.version}\n\n## Gancho\n${F.gancho}\n\n## Diferencia\n${F.diferencia}\n\n## Hallazgo\n${F.insight.map(([c, t]) => `- [${c}] ${t}`).join('\n')}\n\n## Propósito\n- Problema: ${F.proposito.problema}\n- Objetivos: ${objName(F.proposito.obj1)} / ${objName(F.proposito.obj2)}\n- KPI: ${F.proposito.kpi} — ${F.proposito.kpi_motivo}\n\n## Segmento y ocasión\n${F.segmento}\n${F.ocasion}\n\n## Platos\n${F.platos_detalle.map(p => `- ${p.nombre} (${p.ancla}, PENDIENTE): ${p.carta}`).join('\n')}\n\n## Pendientes\n${F.pendientes.map(p => '- ' + p).join('\n')}\n\n## Guion\n${F.slides.map(s => `### S${String(s.n).padStart(2, '0')} · ${s.nombre}\n- Propósito: ${s.proposito}\n- Texto: ${[s.texto.titular, s.texto.subtitulo, s.texto.micro].filter(Boolean).join(' / ')}\n- Ficha mínima: ${s.ficha_minima}\n\n\`\`\`\n${s.prompt}\n\`\`\``).join('\n\n')}\n\n## Caption\n${F.caption}\n\nCTA: ${F.cta}\n\n## Producción\n${F.produccion.metodo}\n${F.produccion.tomas.map(t => '- ' + t).join('\n')}\n\n## Medición\n${F.medicion.kpi} · ${F.medicion.hipotesis}\n`;
+}
+
+/* ------------------------------------------------------------ exportaciones */
+function exportar(kind){
+  const today = iso(new Date());
+  if(kind === 'csv'){
+    const rows = [['ID', 'Bloque', 'Formato', 'Título', 'Estructura', 'Objetivo 1', 'Objetivo 2', 'Segmentos', 'Platos', 'Anclas', 'KPI', 'Esfuerzo', 'Prioridad', 'Estado', 'Etapa', 'Responsable', 'Fecha', 'Gancho', 'Nota']];
+    D.ideas.forEach(i => { const p = planOf(i.id); rows.push([i.id, i.bloque, i.formato, i.titulo, i.estructura_label, objName(i.obj1), objName(i.obj2), segNames(i.segmentos), i.platos_nombres.join('; '), i.anclas.map(a => a.id).join('; '), i.kpi_label, i.esfuerzo, i.prioridad, i.estado, etapaOf(i.id), p.responsable || '', p.fecha || '', i.gancho, i.nota]); });
+    return offerFile(`origen-banco-240-${today}.csv`, toCsv(rows), 'text/csv');
+  }
+  if(kind === 'json') return offerFile(`origen-base-${today}.json`, JSON.stringify(D, null, 1), 'application/json');
+  if(kind === 'refs'){
+    const rows = [['REF', 'Marca', 'Plataforma', 'URL', 'Imagen', 'Autor', 'Revisado', 'Estado', 'Luz', 'Descripción', 'Principio', 'Evitar']];
+    D.investigacion.referencias.forEach(r => rows.push([r.id, r.marca, r.plataforma, r.url, r.imagen, r.autor, r.revisado, r.estado, r.luz, r.visual, r.principio, r.evitar]));
+    return offerFile(`origen-referencias-${today}.csv`, toCsv(rows), 'text/csv');
+  }
+  const sep = '\n\n' + '='.repeat(80) + '\n\n';
+  const full = Object.values(D.fichas).flatMap(F => F.slides.map(s => s.prompt));
+  if(kind === 'promptsfull') return offerFile(`origen-prompts-C001-C002-${today}.txt`, full.join(sep), 'text/plain');
+  if(kind === 'prompts') return offerFile(`origen-prompts-todos-${today}.txt`, full.concat(D.ideas.filter(i => !i.ficha).map(i => i.prompt_base)).join(sep), 'text/plain');
+  if(kind === 'md') return offerFile(`origen-fichas-C001-C002-${today}.md`, Object.keys(D.fichas).map(fichaMd).join('\n\n---\n\n'), 'text/markdown');
+  if(kind === 'backup') return offerFile(`origen-respaldo-plan-${today}.json`, JSON.stringify({tipo:'origen-respaldo', version:1, exportado:new Date().toISOString(), plan:S.plan, favoritos:[...S.favs]}, null, 1), 'application/json');
+}
+async function importar(file){
+  try{
+    const j = JSON.parse(await file.text());
+    if(j.tipo !== 'origen-respaldo' || typeof j.plan !== 'object') throw new Error('formato');
+    let n = 0; for(const id in j.plan){ if(IDEA[id]){ savePlan(id, j.plan[id]); n++; } }
+    (j.favoritos || []).forEach(f => IDEA[f] && S.favs.add(f)); STORE.set('favs', [...S.favs]);
+    toast(`Respaldo importado: ${n} entradas${S.mode === 'compartido' && S.canWrite !== false ? ' (también en el plan compartido)' : ''}`); rerender();
+  }catch(e){ toast('El archivo no es un respaldo de ORIGEN válido.'); }
+}
+
+/* ------------------------------------------------------------ adjuntar anclas */
+let attachTarget = null;
+async function attachFile(id, file){
+  if(!/^image\/(png|jpeg|webp)$/.test(file.type)){ toast('Usa una foto JPG, PNG o WebP.'); return; }
+  if(S.assets && S.db){
+    try{
+      const res = await S.assets.upload(file);
+      await S.db.doc('anclas/' + id).set({asset:res.id, nombre:file.name, subido:new Date().toISOString(), tipo:id.split('-')[0]});
+      toast(id + ' adjuntada y compartida con el equipo'); return;
+    }catch(e){ toast('No se pudo subir al artefacto (' + (e && e.code || 'error') + '); se guarda en este navegador.'); }
+  }
+  try{
+    await IDB.put(id, {blob:file, nombre:file.name, subido:new Date().toISOString()});
+    if(S.localAnch[id]) URL.revokeObjectURL(S.localAnch[id].url);
+    S.localAnch[id] = {blob:file, nombre:file.name, url:URL.createObjectURL(file)};
+    toast(id + ' adjuntada en este navegador'); rerender();
+  }catch(e){ toast('Este navegador no permite guardar archivos locales.'); }
+}
+
+/* ------------------------------------------------------------ eventos */
+document.addEventListener('click', e => {
+  const t = e.target.closest('button,[data-open],a'); if(!t) return;
+  if(t.dataset.copy){ const tx = clipGet(t.dataset.copy); if(tx === undefined){ toast('Vuelve a intentarlo: la vista se actualizó.'); return; } copyText(tx, t); return; }
+  if(t.dataset.copyimg){ copyOwnImage(t.dataset.copyimg, t); return; }
+  if(t.dataset.dlAsset){ const s = anchorSrc(t.dataset.dlAsset); if(s) fetch(s.src).then(r => r.blob()).then(b => offerFile(t.dataset.dlAsset + '.jpg', b, 'image/jpeg')).catch(() => toast('No se pudo leer el archivo en esta vista.')); return; }
+  if(t.dataset.attach){ attachTarget = t.dataset.attach; document.getElementById('fileAnchor').click(); return; }
+  if(t.dataset.fav){ const id = t.dataset.fav; S.favs.has(id) ? S.favs.delete(id) : S.favs.add(id); STORE.set('favs', [...S.favs]); rerender(); return; }
+  if(t.dataset.open){ location.hash = t.dataset.open; return; }
+  if(t.dataset.exp){ exportar(t.dataset.exp); return; }
+  if(t.dataset.set !== undefined && t.tagName === 'BUTTON'){ S.ui[t.dataset.set] = t.dataset.val; if(t.dataset.set === 'tab') S.ui.bloque = ''; saveUi(); rerender(); return; }
+  if(t.dataset.toggle){ S.ui[t.dataset.toggle] = !S.ui[t.dataset.toggle]; saveUi(); rerender(); return; }
+  const act = t.dataset.act;
+  if(act === 'close'){ closeSheet(); return; }
+  if(act === 'clear'){ Object.assign(S.ui, {bloque:'', q:'', obj:'', seg:'', est:'', estado:'', kpi:'', sort:'id', fav:false}); saveUi(); rerender(); return; }
+  if(act === 'import'){ document.getElementById('fileImport').click(); return; }
+  if(act === 'propose'){ S.proposal = propose(); rerender(); return; }
+  if(act === 'dropprop'){ S.proposal = null; rerender(); return; }
+  if(act === 'applyprop'){ (S.proposal || []).forEach(x => savePlan(x.id, {fecha:x.fecha, etapa: etapaOf(x.id) === 'Idea' ? 'Brief listo' : etapaOf(x.id)})); toast(`Fechas asignadas a ${S.proposal.length} piezas`); S.proposal = null; rerender(); return; }
+  if(act === 'pushlocal'){ const ids = S.localOnly || []; ids.forEach(id => savePlan(id, {})); S.localOnly = []; toast(`${ids.length} entradas enviadas al plan compartido`); rerender(); return; }
+});
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && !document.getElementById('drawer').hidden){ closeSheet(); return; }
+  if((e.key === 'Enter' || e.key === ' ') && e.target.dataset && e.target.dataset.open){ e.preventDefault(); location.hash = e.target.dataset.open; }
+});
+document.getElementById('drawer').addEventListener('click', e => { if(e.target.id === 'drawer') closeSheet(); });
+document.addEventListener('change', e => {
+  const t = e.target;
+  if(t.dataset.plan){ savePlan(t.dataset.plan, {[t.dataset.field]: t.value}); if(t.dataset.field !== 'notas') rerender(); return; }
+  if(t.tagName === 'SELECT' && t.dataset.set){ S.ui[t.dataset.set] = t.value; saveUi(); rerender(); return; }
+  if(t.id === 'fileAnchor' && t.files[0] && attachTarget){ attachFile(attachTarget, t.files[0]); t.value = ''; return; }
+  if(t.id === 'fileImport' && t.files[0]){ importar(t.files[0]); t.value = ''; }
+});
+let qT; document.addEventListener('input', e => { if(e.target.id === 'q'){ clearTimeout(qT); const v = e.target.value; qT = setTimeout(() => { S.ui.q = v; saveUi(); const pos = e.target.selectionStart; rerender(); const q = document.getElementById('q'); if(q){ q.focus(); q.setSelectionRange(pos, pos); } }, 220); } });
+window.addEventListener('hashchange', route);
+
+renderSync(); route();
+loadLocalAnchors().then(() => { if(Object.keys(S.localAnch).length) rerender(); });
+initCaps();
+})();
+</script>
+</body>
+</html>
